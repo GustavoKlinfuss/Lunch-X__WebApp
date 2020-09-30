@@ -1,43 +1,39 @@
 <template>
-	<div class="container" :key="keyToReload">
+	<div class="container" :key="keyToReloadScreen">
 		<h1 class="header">{{header}}</h1>
 			<li v-for="(request, index) in requests" v-bind:key="request.id">
-				<GtItemCard :request="request" :index="index" :generalOptions="generalOptions" @card-excluded="removeCard($event)"></GtItemCard>
+				<RequestCard :request="request" :index="index" :requestOptions="requestOptions" @card-excluded="removeCard($event)"></RequestCard>
 			</li>
-		<b-button size="lg" class="gt-btn" variant="warning" @click="addRequest()">Adicionar mais marmita</b-button>
+		<b-button size="lg" class="gt-btn" variant="warning" @click="addItem()">Adicionar mais marmita</b-button>
 		<b-button size="lg" class="gt-btn" variant="warning" @click="makeRequest()">Fazer pedido</b-button>
 	</div>
 	
 </template>
 
 <script>
-
-import GtItemCard from './GtItemCard'
+import RequestCard from './RequestCard'
 
 var data = {
-	generalOptions: {
+	requestOptions: {
 		meatOptions: ['Frango', 'Bife'],
     sizeOptions: ['Pequena', 'Grande'],
     saladOptions: ['Com tempero', 'Sem tempero'],
 	},
-	requests: [
-			{
-					meat: '',
-					size: '',
-					salad: ''
-			}
-	],
+	requests: [	],
 	header: 'Tempeadori - Faça seu pedido',
-	keyToReload: 0
+	keyToReloadScreen: 0
 }
 
 export default {
-	name: 'Main',
-	data: function () {
-			return data
+	name: 'RequestsScreen',
+	data: function () { return data },
+	created: function () {
+		if(!this.requests.length) {
+			this.addItem()
+		}
 	},
 	components: {
-		GtItemCard
+		RequestCard
 	},
 	methods: {
 		makeRequest () {
@@ -53,46 +49,52 @@ export default {
 
 			console.log('Mapeou o pedido para um objeto mais simples')
 
-			const meatOptions = this.generalOptions.meatOptions;
-			const sizeOptions = this.generalOptions.sizeOptions;
-			const saladOptions = this.generalOptions.saladOptions;
-			var requestMessage = ""
+			const meatOptions = this.requestOptions.meatOptions;
+			const sizeOptions = this.requestOptions.sizeOptions;
+			const saladOptions = this.requestOptions.saladOptions;
+			var message = ""
 			var range = [0, 1];
 
 			range.forEach(i => {
 				range.forEach(j => {
-					var filteredRequest = requestList
+					const filteredRequest = requestList
 						.filter(request => request.meat === meatOptions[i] && request.size === sizeOptions[j])
 
 					if (filteredRequest.length){
-						requestMessage += filteredRequest.length + ' ' + sizeOptions[j] + ' ' + meatOptions[i] + '\n' 
+						message += filteredRequest.length + ' ' + sizeOptions[j] + ' ' + meatOptions[i] + '\n' 
 					}
 				})
 			})
 
-			requestMessage += "\n"
+			message += "\n"
 
 			range.forEach(i => {
-				var salad = requestList.filter(request => request.salad === saladOptions[i]);
-				if (salad.length) requestMessage += salad.length + ' Salada ' + saladOptions[i].toLowerCase() + '\n';
+				const salad = requestList.filter(request => request.salad === saladOptions[i]);
+
+				if (salad.length) {
+					message += salad.length + ' Salada ' + saladOptions[i].toLowerCase() + '\n';
+				}
 			})
 
 			console.log('Fez a mensagem')
-
-			alert(requestMessage)
+			alert(message)
 		},
-		addRequest: function () {
-			this.requests.push({
+		addItem: function () {
+			const newItem = {
 				meat: '',
 				size: '',
 				salad: ''
-			})
+			};
+
+			this.requests.push(newItem)
+			console.log('Foi adicionado um pedido');
 		},
 		removeCard: function (index) {
 			this.requests.splice(index, 1);
-			this.keyToReload += 1;
+			this.keyToReloadScreen += 1;
+			console.log('Foi removido um pedido');
 		}
-    }
+  }
 };
 </script>
 
@@ -106,7 +108,7 @@ export default {
 
 .header {
 	margin-top: 8px;
-	padding: 8px;
+	padding: 12px;
 	background-color: rgb(235, 235, 235);
 	border: 1px solid rgb(194, 194, 194);
 	border-radius: 8px;

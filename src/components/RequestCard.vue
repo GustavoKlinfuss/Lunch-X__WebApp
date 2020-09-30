@@ -6,16 +6,16 @@
     </div>
     
     <label class="legendLabel">Opções de carne:</label>
-    <GtRadio :options="generalOptions.meatOptions" @optionselected="selectMeat($event, request)"
-      :default="generalOptions.meatOptions[0]" :preselectedoption="request.meat"></GtRadio>
+    <GtRadio :options="requestOptions.meatOptions" @optionselected="selectMeat($event, request)"
+      :default="requestOptions.meatOptions[0]" :preselectedoption="request.meat"></GtRadio>
 
     <label class="legendLabel">Opções de tamanho:</label>
-    <GtRadio :options="generalOptions.sizeOptions" @optionselected="selectSize($event, request)" 
-      :default="generalOptions.sizeOptions[0]" :preselectedoption="request.size"></GtRadio>
+    <GtRadio :options="requestOptions.sizeOptions" @optionselected="selectSize($event, request)" 
+      :default="requestOptions.sizeOptions[0]" :preselectedoption="request.size"></GtRadio>
 
     <label class="legendLabel">Opções de salada:</label>
-    <GtRadio :options="generalOptions.saladOptions" @optionselected="selectSalad($event, request)" 
-      :default="generalOptions.saladOptions[0]" :preselectedoption="request.salad"></GtRadio>
+    <GtRadio :options="requestOptions.saladOptions" @optionselected="selectSalad($event, request)" 
+      :default="requestOptions.saladOptions[0]" :preselectedoption="request.salad"></GtRadio>
   </div>
 </template>
 
@@ -23,16 +23,14 @@
 import GtRadio from './GtRadio'
 
 export default {
+  name: 'RequestCard',
   components: {
     GtRadio
   },
   props: {
     request: Object,
     index: Number,
-    generalOptions: Object
-  },
-  created: function () {
-    console.log(this.request, this.index, this.generalOptions)
+    requestOptions: Object
   },
   methods: {
     selectMeat (value, request) {
