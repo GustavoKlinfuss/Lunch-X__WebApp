@@ -1,11 +1,10 @@
 <template>
-	<div class="container" :key="keyToReloadScreen">
-		<h1 class="header">{{header}}</h1>
-			<li v-for="(request, index) in requests" v-bind:key="request.id">
-				<RequestCard :request="request" :index="index" :requestOptions="requestOptions" @card-excluded="removeCard($event)"></RequestCard>
-			</li>
-		<b-button size="lg" class="gt-btn" variant="warning" @click="addItem()">Adicionar mais marmita</b-button>
-		<b-button size="lg" class="gt-btn" variant="warning" @click="makeRequest()">Fazer pedido</b-button>
+	<div class="requestScreen" :key="keyToReloadScreen">
+		<li v-for="(request, index) in requests" v-bind:key="request.id">
+			<RequestCard :request="request" :index="index" :requestOptions="requestOptions" @card-excluded="removeCard($event)"></RequestCard>
+		</li>
+		<b-button size="lg" class="gt-btn" @click="addItem()">Adicionar mais marmita</b-button>
+		<b-button size="lg" class="gt-btn" @click="makeRequest()">Fazer pedido</b-button>
 	</div>
 	
 </template>
@@ -20,7 +19,6 @@ var data = {
     saladOptions: ['Com tempero', 'Sem tempero'],
 	},
 	requests: [	],
-	header: 'Tempeadori - Faça seu pedido',
 	keyToReloadScreen: 0
 }
 
@@ -98,30 +96,16 @@ export default {
 };
 </script>
 
-<style>
-.container {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	display: flex; /* Torna o elemento um flex container automaticamente transformando todos os seus filhos diretos em flex itens. */
-	flex-direction: column; /* Faz com que os elementos sejam colocados todos em uma coluna, indo de cima para baixo */
-	font-size: 20px;
-}
-
-.header {
-	margin-top: 8px;
-	padding: 12px;
-	background-color: rgb(235, 235, 235);
-	border: 1px solid rgb(194, 194, 194);
-	border-radius: 8px;
-}
-
-li {
-  list-style-type: none;
+<style scoped>
+.requestScreen {
+	display: flex;
+	flex-direction: column;
 }
 
 .gt-btn {
 	margin: 4px 0px 4px 0px;
-	border-radius: 20px;
-	border: 1px solid green;
+	border-radius: 0px;
+	background-color:  rgb(0, 50, 107);
+	border: 1px solid white;
 }
-
 </style>

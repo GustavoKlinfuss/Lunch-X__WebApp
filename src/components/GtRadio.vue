@@ -35,19 +35,14 @@ export default {
             return value === this.selectedValue;
         },
         radioSelected() { return 'radio-selected gtRadioButton'; },
-        radioNotSelected() { return 'radio-not-selected gtRadioButton'; }
+        radioNotSelected() { return 'gtRadioButton'; }
     },
 };
 </script>
 
 <style>
 .radio-selected {
-  color: rgb(66, 66, 66);
   font-weight: bolder !important;
-}
-
-.radio-not-selected {
-  color: gray;
 }
 
 .gtRadioButtonGroup {
@@ -59,8 +54,8 @@ export default {
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: black !important;
-    border-color: black !important;
+    background-color: rgb(0, 50, 107) !important;
+    border-color: rgb(0, 50, 107) !important;
 }
 
 </style>

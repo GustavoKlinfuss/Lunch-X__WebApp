@@ -54,9 +54,10 @@ export default {
 <style scoped>
 .card {
   background-color: rgb(235, 235, 235);
+  border-color: rgb(0, 50, 107);
   padding-bottom: 8px;
   margin-bottom: 8px;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 .cardHead {
@@ -81,7 +82,6 @@ export default {
 }
 
 .legendLabel {
-	margin: 0px 0px 0px 32px;
-	color:green;
+  margin: 0px 0px 0px 32px;
 }
 </style>
