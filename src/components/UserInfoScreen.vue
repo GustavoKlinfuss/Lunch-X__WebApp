@@ -55,7 +55,7 @@ export default {
   methods: {
     submitInfo: function () {
       console.log('submitou')
-      this.$emit('info-finished', this.form);
+      this.$emit('step-completed', this.form);
     }
   }
   

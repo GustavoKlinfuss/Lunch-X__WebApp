@@ -2,19 +2,19 @@
   <div class="card">
     <div class="card-head">
       <label class="card-title"><strong>Marmita {{index + 1}}</strong></label>
-      <b-button class="card-remove-button" variant="danger" @click="excludeCard(index)">X</b-button>
+      <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>
     </div>
     
     <label class="legend-label">Opções de carne:</label>
-    <GtRadio :options="lunchBoxOptions.meatOptions" @optionselected="selectMeat($event, order)"
+    <GtRadio :options="lunchBoxOptions.meatOptions" v-on:optionselected="selectMeat($event, order)"
       :default="lunchBoxOptions.meatOptions[0]" :preselectedoption="order.meat"></GtRadio>
 
     <label class="legend-label">Opções de tamanho:</label>
-    <GtRadio :options="lunchBoxOptions.sizeOptions" @optionselected="selectSize($event, order)" 
+    <GtRadio :options="lunchBoxOptions.sizeOptions" v-on:optionselected="selectSize($event, order)" 
       :default="lunchBoxOptions.sizeOptions[0]" :preselectedoption="order.size"></GtRadio>
 
     <label class="legend-label">Opções de salada:</label>
-    <GtRadio :options="lunchBoxOptions.saladOptions" @optionselected="selectSalad($event, order)" 
+    <GtRadio :options="lunchBoxOptions.saladOptions" v-on:optionselected="selectSalad($event, order)" 
       :default="lunchBoxOptions.saladOptions[0]" :preselectedoption="order.salad"></GtRadio>
   </div>
 </template>

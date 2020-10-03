@@ -2,8 +2,8 @@
   <div id="app" >
     <div class="container">
       <h1 class="header">{{header}}</h1>
-      <RequestsScreen v-if="stage === 'RequestsScreen'" v-on:order-finished="completeOrder($event)"/>
-      <UserInfoScreen v-if="stage === 'UserInfoScreen'" v-on:info-finished="endOrder($event)"/>
+      <RequestsScreen v-if="stage === 'RequestsScreen'" v-on:step-completed="completeOrder($event)"/>
+      <UserInfoScreen v-if="stage === 'UserInfoScreen'" v-on:step-completed="endOrder($event)"/>
     </div>
   </div>
 </template>

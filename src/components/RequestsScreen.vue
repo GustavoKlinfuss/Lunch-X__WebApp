@@ -36,7 +36,7 @@ export default {
 	},
 	methods: {
 		finishOrder () {
-			this.$emit('order-finished', this.orders)
+			this.$emit('step-completed', this.orders)
 
 			// console.log('Entrou na função de fazer o pedido')
 			// var orderList = this.orders
