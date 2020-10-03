@@ -1,42 +1,47 @@
 <template>
 <div class="gtRadioButtonGroup">
-    <li v-for="option in options" v-bind:key="option.id">
-        <b-form-radio :class="thisOptionSelected(option)? radioSelected(): radioNotSelected()" button-variant="warning" size="lg" v-model="selectedValue" :value="option" v-on:change="selectOption(option)">{{option}}</b-form-radio>
-    </li>
+  <li v-for="option in options" v-bind:key="option.id">
+    <b-form-radio :class="selectRadioClass(option)" button-variant="warning"
+      v-model="selectedValue" :value="option" v-on:change="selectOption(option)">
+      {{option}}
+    </b-form-radio>
+  </li>
 </div>
 </template>
 
 <script>
 export default {
-    name: 'GtRadio',
-    data: function () {
-        return {
-            selectedValue: "",
-        }
+  name: 'GtRadio',
+  data: function () {
+    return {
+        selectedValue: "",
+    }
+  },
+  created: function () {
+    if (this.preselectedoption) {
+        this.selectOption(this.preselectedoption)
+    } else if (this.default) {
+        this.selectOption(this.default);
+    }
+  },
+  props: {
+    options: Array,
+    default: String,
+    preselectedoption: String
+  },
+  methods: {
+    selectOption: function (event) {
+      this.selectedValue = event;
+      this.$emit('optionselected', event);
     },
-    created: function () {
-        if (this.preselectedoption) {
-            this.selectOption(this.preselectedoption)
-        } else if (this.default) {
-            this.selectOption(this.default);
-        }
-    },
-    props: {
-        options: Array,
-        default: String,
-        preselectedoption: String
-    },
-    methods: {
-        selectOption (event) {
-            this.selectedValue = event;
-            this.$emit('optionselected', event);
-        },
-        thisOptionSelected(value) {
-            return value === this.selectedValue;
-        },
-        radioSelected() { return 'radio-selected gtRadioButton'; },
-        radioNotSelected() { return 'gtRadioButton'; }
-    },
+    selectRadioClass : function (option) {
+      const classOfRadio = option === this.selectedValue
+        ? 'radio-selected gtRadioButton'
+        : 'gtRadioButton';
+
+      return classOfRadio;
+    }
+  }
 };
 </script>
 
