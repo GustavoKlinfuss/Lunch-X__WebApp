@@ -71,7 +71,7 @@ export default {
 .card-title {
 	font-size: 24px;
   margin-top: 8px;
-  margin-left: 8ox;
+  margin-left: 8px;
 }
 
 .card-remove-button {
@@ -79,6 +79,8 @@ export default {
   font-size: 14px;
   width: 40px;
   height: 40px;
+  border: 1px solid rgb(0, 50, 107);
+  border-radius: 0px;
 }
 
 .legend-label {
