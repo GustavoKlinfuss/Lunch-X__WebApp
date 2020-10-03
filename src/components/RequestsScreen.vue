@@ -1,12 +1,11 @@
 <template>
-	<div class="requestScreen" :key="keyToReloadScreen">
-		<li v-for="(request, index) in requests" v-bind:key="request.id">
-			<RequestCard :request="request" :index="index" :requestOptions="requestOptions" @card-excluded="removeCard($event)"></RequestCard>
-		</li>
-		<GtButton text="Adicionar mais marmita" v-on:click="addItemToOrder()"/>
-		<GtButton text="Próxima etapa" v-on:click="finishOrder()"/>
-	</div>
-	
+<div class="order-screen" :key="keyToReloadScreen">
+	<li v-for="(order, index) in orders" v-bind:key="order.id">
+		<RequestCard :order="order" :index="index" :lunchBoxOptions="lunchBoxOptions" v-on:card-excluded="removeCard($event)"></RequestCard>
+	</li>
+	<GtButton text="Adicionar mais marmita" v-on:click="addItemToOrder()"/>
+	<GtButton text="Próxima etapa" v-on:click="finishOrder()"/>
+</div>
 </template>
 
 <script>
@@ -14,12 +13,12 @@ import RequestCard from './RequestCard'
 import GtButton from './GtButton'
 
 var data = {
-	requestOptions: {
+	lunchBoxOptions: {
 		meatOptions: ['Frango', 'Bife'],
     sizeOptions: ['Pequena', 'Grande'],
     saladOptions: ['Com tempero', 'Sem tempero'],
 	},
-	requests: [	],
+	orders: [	],
 	keyToReloadScreen: 0
 }
 
@@ -27,7 +26,7 @@ export default {
 	name: 'RequestsScreen',
 	data: function () { return data },
 	created: function () {
-		if(!this.requests.length) {
+		if(!this.orders.length) {
 			this.addItemToOrder()
 		}
 	},
@@ -37,30 +36,30 @@ export default {
 	},
 	methods: {
 		finishOrder () {
-			this.$emit('order-finished', this.requests)
+			this.$emit('order-finished', this.orders)
 
 			// console.log('Entrou na função de fazer o pedido')
-			// var requestList = this.requests
-			// 	.map(request => {
+			// var orderList = this.orders
+			// 	.map(order => {
 			// 		return {
-			// 			size: request.size,
-			// 			meat: request.meat,
-			// 			salad: request.salad
+			// 			size: order.size,
+			// 			meat: order.meat,
+			// 			salad: order.salad
 			// 		}
 			// 	});
 
 			// console.log('Mapeou o pedido para um objeto mais simples')
 
-			// const meatOptions = this.requestOptions.meatOptions;
-			// const sizeOptions = this.requestOptions.sizeOptions;
-			// const saladOptions = this.requestOptions.saladOptions;
+			// const meatOptions = this.lunchBoxOptions.meatOptions;
+			// const sizeOptions = this.lunchBoxOptions.sizeOptions;
+			// const saladOptions = this.lunchBoxOptions.saladOptions;
 			// var message = ""
 			// var range = [0, 1];
 
 			// range.forEach(i => {
 			// 	range.forEach(j => {
-			// 		const filteredRequest = requestList
-			// 			.filter(request => request.meat === meatOptions[i] && request.size === sizeOptions[j])
+			// 		const filteredRequest = orderList
+			// 			.filter(order => order.meat === meatOptions[i] && order.size === sizeOptions[j])
 
 			// 		if (filteredRequest.length){
 			// 			message += filteredRequest.length + ' ' + sizeOptions[j] + ' ' + meatOptions[i] + '\n' 
@@ -71,7 +70,7 @@ export default {
 			// message += "\n"
 
 			// range.forEach(i => {
-			// 	const salad = requestList.filter(request => request.salad === saladOptions[i]);
+			// 	const salad = orderList.filter(order => order.salad === saladOptions[i]);
 
 			// 	if (salad.length) {
 			// 		message += salad.length + ' Salada ' + saladOptions[i].toLowerCase() + '\n';
@@ -88,11 +87,11 @@ export default {
 				salad: ''
 			};
 
-			this.requests.push(newItem)
+			this.orders.push(newItem)
 			console.log('Foi adicionado um pedido');
 		},
 		removeCard: function (index) {
-			this.requests.splice(index, 1);
+			this.orders.splice(index, 1);
 			this.keyToReloadScreen += 1;
 			console.log('Foi removido um pedido');
 		}
@@ -101,7 +100,7 @@ export default {
 </script>
 
 <style scoped>
-.requestScreen {
+.order-screen {
 	display: flex;
 	flex-direction: column;
 }

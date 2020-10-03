@@ -6,16 +6,16 @@
     </div>
     
     <label class="legend-label">Opções de carne:</label>
-    <GtRadio :options="requestOptions.meatOptions" @optionselected="selectMeat($event, request)"
-      :default="requestOptions.meatOptions[0]" :preselectedoption="request.meat"></GtRadio>
+    <GtRadio :options="lunchBoxOptions.meatOptions" @optionselected="selectMeat($event, order)"
+      :default="lunchBoxOptions.meatOptions[0]" :preselectedoption="order.meat"></GtRadio>
 
     <label class="legend-label">Opções de tamanho:</label>
-    <GtRadio :options="requestOptions.sizeOptions" @optionselected="selectSize($event, request)" 
-      :default="requestOptions.sizeOptions[0]" :preselectedoption="request.size"></GtRadio>
+    <GtRadio :options="lunchBoxOptions.sizeOptions" @optionselected="selectSize($event, order)" 
+      :default="lunchBoxOptions.sizeOptions[0]" :preselectedoption="order.size"></GtRadio>
 
     <label class="legend-label">Opções de salada:</label>
-    <GtRadio :options="requestOptions.saladOptions" @optionselected="selectSalad($event, request)" 
-      :default="requestOptions.saladOptions[0]" :preselectedoption="request.salad"></GtRadio>
+    <GtRadio :options="lunchBoxOptions.saladOptions" @optionselected="selectSalad($event, order)" 
+      :default="lunchBoxOptions.saladOptions[0]" :preselectedoption="order.salad"></GtRadio>
   </div>
 </template>
 
@@ -28,21 +28,21 @@ export default {
     GtRadio
   },
   props: {
-    request: Object,
+    order: Object,
     index: Number,
-    requestOptions: Object
+    lunchBoxOptions: Object
   },
   methods: {
-    selectMeat (value, request) {
-			request.meat = value;
+    selectMeat (value, order) {
+			order.meat = value;
 		},
 
-		selectSize (value, request) {
-			request.size = value;
+		selectSize (value, order) {
+			order.size = value;
 		},
 
-		selectSalad (value, request) {
-			request.salad = value;
+		selectSalad (value, order) {
+			order.salad = value;
     },
     excludeCard: function () {
       this.$emit('card-excluded', this.index)
