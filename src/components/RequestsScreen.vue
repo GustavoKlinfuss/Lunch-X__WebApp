@@ -3,14 +3,15 @@
 		<li v-for="(request, index) in requests" v-bind:key="request.id">
 			<RequestCard :request="request" :index="index" :requestOptions="requestOptions" @card-excluded="removeCard($event)"></RequestCard>
 		</li>
-		<b-button size="lg" class="gt-btn" @click="addItem()">Adicionar mais marmita</b-button>
-		<b-button size="lg" class="gt-btn" @click="makeRequest()">Fazer pedido</b-button>
+		<GtButton text="Adicionar mais marmita" v-on:click="addItemToOrder()"/>
+		<GtButton text="Próxima etapa" v-on:click="finishOrder()"/>
 	</div>
 	
 </template>
 
 <script>
 import RequestCard from './RequestCard'
+import GtButton from './GtButton'
 
 var data = {
 	requestOptions: {
@@ -27,57 +28,60 @@ export default {
 	data: function () { return data },
 	created: function () {
 		if(!this.requests.length) {
-			this.addItem()
+			this.addItemToOrder()
 		}
 	},
 	components: {
-		RequestCard
+		RequestCard,
+		GtButton
 	},
 	methods: {
-		makeRequest () {
-			console.log('Entrou na função de fazer o pedido')
-			var requestList = this.requests
-				.map(request => {
-					return {
-						size: request.size,
-						meat: request.meat,
-						salad: request.salad
-					}
-				});
+		finishOrder () {
+			this.$emit('order-finished', this.requests)
 
-			console.log('Mapeou o pedido para um objeto mais simples')
+			// console.log('Entrou na função de fazer o pedido')
+			// var requestList = this.requests
+			// 	.map(request => {
+			// 		return {
+			// 			size: request.size,
+			// 			meat: request.meat,
+			// 			salad: request.salad
+			// 		}
+			// 	});
 
-			const meatOptions = this.requestOptions.meatOptions;
-			const sizeOptions = this.requestOptions.sizeOptions;
-			const saladOptions = this.requestOptions.saladOptions;
-			var message = ""
-			var range = [0, 1];
+			// console.log('Mapeou o pedido para um objeto mais simples')
 
-			range.forEach(i => {
-				range.forEach(j => {
-					const filteredRequest = requestList
-						.filter(request => request.meat === meatOptions[i] && request.size === sizeOptions[j])
+			// const meatOptions = this.requestOptions.meatOptions;
+			// const sizeOptions = this.requestOptions.sizeOptions;
+			// const saladOptions = this.requestOptions.saladOptions;
+			// var message = ""
+			// var range = [0, 1];
 
-					if (filteredRequest.length){
-						message += filteredRequest.length + ' ' + sizeOptions[j] + ' ' + meatOptions[i] + '\n' 
-					}
-				})
-			})
+			// range.forEach(i => {
+			// 	range.forEach(j => {
+			// 		const filteredRequest = requestList
+			// 			.filter(request => request.meat === meatOptions[i] && request.size === sizeOptions[j])
 
-			message += "\n"
+			// 		if (filteredRequest.length){
+			// 			message += filteredRequest.length + ' ' + sizeOptions[j] + ' ' + meatOptions[i] + '\n' 
+			// 		}
+			// 	})
+			// })
 
-			range.forEach(i => {
-				const salad = requestList.filter(request => request.salad === saladOptions[i]);
+			// message += "\n"
 
-				if (salad.length) {
-					message += salad.length + ' Salada ' + saladOptions[i].toLowerCase() + '\n';
-				}
-			})
+			// range.forEach(i => {
+			// 	const salad = requestList.filter(request => request.salad === saladOptions[i]);
 
-			console.log('Fez a mensagem')
-			alert(message)
+			// 	if (salad.length) {
+			// 		message += salad.length + ' Salada ' + saladOptions[i].toLowerCase() + '\n';
+			// 	}
+			// })
+
+			// console.log('Fez a mensagem')
+			// alert(message)
 		},
-		addItem: function () {
+		addItemToOrder: function () {
 			const newItem = {
 				meat: '',
 				size: '',
