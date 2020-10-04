@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import GtRadio from './GtRadio'
+import GtRadio from '../../../components/GtRadio'
 
 export default {
   name: 'RequestCard',

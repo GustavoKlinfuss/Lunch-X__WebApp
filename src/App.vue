@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import OrderScreen from './components/OrderScreen.vue'
-import UserInfoScreen from './components/UserInfoScreen.vue'
+import OrderScreen from './app/order-details/OrderScreen.vue'
+import UserInfoScreen from './app/user-details/UserInfoScreen.vue'
 
 export default {
   name: 'App',

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import GtButton from './GtButton'
+import GtButton from '../../components/GtButton.vue'
 
 export default {
   components: {

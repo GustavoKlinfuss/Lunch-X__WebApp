@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import PackedLunchCard from './PackedLunchCard'
-import GtButton from './GtButton'
+import PackedLunchCard from './packed-lunch-card/PackedLunchCard.vue'
+import GtButton from '../../components/GtButton.vue'
 
 var data = {
 	packedLunchOptions: {
