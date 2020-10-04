@@ -1,5 +1,5 @@
 <template>
-  <b-button size="lg" class="gt-btn" v-on:click="click()">{{text}}</b-button>
+<b-button size="lg" class="gt-btn" v-on:click="click()">{{text}}</b-button>
 </template>
 
 <script>

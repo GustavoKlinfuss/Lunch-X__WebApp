@@ -1,7 +1,7 @@
 <template>
 <div class="order-screen" :key="keyToReloadScreen">
 	<li v-for="(order, index) in orders" v-bind:key="order.id">
-		<RequestCard :order="order" :index="index" :lunchBoxOptions="lunchBoxOptions" v-on:card-excluded="removeCard($event)"></RequestCard>
+		<PackedLunchCard :order="order" :index="index" :packedLunchOptions="packedLunchOptions" v-on:card-excluded="removeCard($event)"/>
 	</li>
 	<GtButton text="Adicionar mais marmita" v-on:click="addItemToOrder()"/>
 	<GtButton text="Próxima etapa" v-on:click="finishOrder()"/>
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import RequestCard from './RequestCard'
+import PackedLunchCard from './PackedLunchCard'
 import GtButton from './GtButton'
 
 var data = {
-	lunchBoxOptions: {
+	packedLunchOptions: {
 		meatOptions: ['Frango', 'Bife'],
     sizeOptions: ['Pequena', 'Grande'],
     saladOptions: ['Com tempero', 'Sem tempero'],
@@ -23,7 +23,7 @@ var data = {
 }
 
 export default {
-	name: 'RequestsScreen',
+	name: 'OrderScreen',
 	data: function () { return data },
 	created: function () {
 		if(!this.orders.length) {
@@ -31,7 +31,7 @@ export default {
 		}
 	},
 	components: {
-		RequestCard,
+		PackedLunchCard,
 		GtButton
 	},
 	methods: {
@@ -50,9 +50,9 @@ export default {
 
 			// console.log('Mapeou o pedido para um objeto mais simples')
 
-			// const meatOptions = this.lunchBoxOptions.meatOptions;
-			// const sizeOptions = this.lunchBoxOptions.sizeOptions;
-			// const saladOptions = this.lunchBoxOptions.saladOptions;
+			// const meatOptions = this.packedLunchOptions.meatOptions;
+			// const sizeOptions = this.packedLunchOptions.sizeOptions;
+			// const saladOptions = this.packedLunchOptions.saladOptions;
 			// var message = ""
 			// var range = [0, 1];
 

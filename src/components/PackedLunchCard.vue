@@ -1,22 +1,22 @@
 <template>
-  <div class="card">
-    <div class="card-head">
-      <label class="card-title"><strong>Marmita {{index + 1}}</strong></label>
-      <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>
-    </div>
-    
-    <label class="legend-label">Opções de carne:</label>
-    <GtRadio :options="lunchBoxOptions.meatOptions" v-on:optionselected="selectMeat($event, order)"
-      :default="lunchBoxOptions.meatOptions[0]" :preselectedoption="order.meat"></GtRadio>
-
-    <label class="legend-label">Opções de tamanho:</label>
-    <GtRadio :options="lunchBoxOptions.sizeOptions" v-on:optionselected="selectSize($event, order)" 
-      :default="lunchBoxOptions.sizeOptions[0]" :preselectedoption="order.size"></GtRadio>
-
-    <label class="legend-label">Opções de salada:</label>
-    <GtRadio :options="lunchBoxOptions.saladOptions" v-on:optionselected="selectSalad($event, order)" 
-      :default="lunchBoxOptions.saladOptions[0]" :preselectedoption="order.salad"></GtRadio>
+<div class="card">
+  <div class="card-head">
+    <label class="card-title"><strong>Marmita {{index + 1}}</strong></label>
+    <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>
   </div>
+  
+  <label class="legend-label">Opções de carne:</label>
+  <GtRadio :options="packedLunchOptions.meatOptions" v-on:optionselected="selectMeat($event, order)"
+    :default="packedLunchOptions.meatOptions[0]" :preselectedoption="order.meat"></GtRadio>
+
+  <label class="legend-label">Opções de tamanho:</label>
+  <GtRadio :options="packedLunchOptions.sizeOptions" v-on:optionselected="selectSize($event, order)" 
+    :default="packedLunchOptions.sizeOptions[0]" :preselectedoption="order.size"></GtRadio>
+
+  <label class="legend-label">Opções de salada:</label>
+  <GtRadio :options="packedLunchOptions.saladOptions" v-on:optionselected="selectSalad($event, order)" 
+    :default="packedLunchOptions.saladOptions[0]" :preselectedoption="order.salad"></GtRadio>
+</div>
 </template>
 
 <script>
@@ -30,7 +30,7 @@ export default {
   props: {
     order: Object,
     index: Number,
-    lunchBoxOptions: Object
+    packedLunchOptions: Object
   },
   methods: {
     selectMeat (value, order) {

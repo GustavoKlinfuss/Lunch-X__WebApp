@@ -1,27 +1,27 @@
 <template>
-  <div id="app" >
-    <div class="container">
-      <h1 class="header">{{header}}</h1>
-      <RequestsScreen v-if="stage === 'RequestsScreen'" v-on:step-completed="completeOrder($event)"/>
-      <UserInfoScreen v-if="stage === 'UserInfoScreen'" v-on:step-completed="endOrder($event)"/>
-    </div>
+<div id="app" >
+  <div class="container">
+    <h1 class="header">{{header}}</h1>
+    <OrderScreen v-if="stage === 'OrderScreen'" v-on:step-completed="completeOrder($event)"/>
+    <UserInfoScreen v-if="stage === 'UserInfoScreen'" v-on:step-completed="endOrder($event)"/>
   </div>
+</div>
 </template>
 
 <script>
-import RequestsScreen from './components/RequestsScreen.vue'
+import OrderScreen from './components/OrderScreen.vue'
 import UserInfoScreen from './components/UserInfoScreen.vue'
 
 export default {
   name: 'App',
   data: function () {
     return {
-      stage: 'RequestsScreen',
+      stage: 'OrderScreen',
       header: 'Tempeadori - Faça seu pedido',
     }
   },
   components: {
-    RequestsScreen,
+    OrderScreen,
     UserInfoScreen
   },
   methods: {
