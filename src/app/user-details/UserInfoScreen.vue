@@ -1,30 +1,17 @@
 <template>
 <div class="column-div">
   <div class="card">
-  <span>Dados para contato e entrega</span><br>
+    <span>Dados para contato e entrega</span><br>
 
-  <div class="card-content">
-
-    <!-- <GtInput :form="form" controlName="name" label="Nome:" placeholder="Seu nome aque" control="form.name"/> -->
-
-    <b-form-group label="Nome:" label-for="name">
-      <b-form-input id="name" v-model="form.name" placeholder="Seu nome aqui" trim></b-form-input>
-    </b-form-group>
-    <b-form-group label="Rua:" label-for="addressStreet">
-      <b-form-input id="addressStreet" v-model="form.addressStreet" trim></b-form-input>
-    </b-form-group>
-    <div class="row-div">
-      <b-form-group style="width: 49%" label="Número:" label-for="addressNumber">
-        <b-form-input id="addressNumber" v-model="form.addressNumber" trim></b-form-input>
-      </b-form-group>
-      <b-form-group style="margin-left: 2%; width: 49%" label="Complemento:" label-for="addressComplement">
-        <b-form-input id="addressComplement" v-model="form.addressComplement" trim></b-form-input>
-      </b-form-group>
+    <div class="card-content">
+      <GtInput label="Nome:" placeholder="Nome" v-model="form.name"/>
+      <GtInput label="Rua:" v-model="form.addressStreet"/>
+      <div class="row-div">
+        <GtInput style="width: 49%" label="Número:" v-model="form.addressNumber"/>
+        <GtInput style="margin-left: 2%; width: 49%" label="Complemento:" v-model="form.addressComplement"/>
+      </div>
+      <GtInput label="Telefone:" v-model="form.phone"/>
     </div>
-    <b-form-group label="Telefone:" label-for="phone">
-      <b-form-input id="phone" v-model="form.phone" trim></b-form-input>
-    </b-form-group>
-  </div>
   </div>
   <GtButton text="Fazer pedido" v-on:click="submitInfo()"/>
 
@@ -36,10 +23,12 @@
 
 <script>
 import GtButton from '../../components/GtButton.vue'
+import GtInput from '../../components/GtInput.vue'
 
 export default {
   components: {
-    GtButton
+    GtButton,
+    GtInput
   },
   data: function () {
     return {
