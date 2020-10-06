@@ -27,10 +27,18 @@ export default {
   components: {
     GtRadio
   },
+  data: function () {
+    return {
+      packedLunchOptions: {
+        meatOptions: ['Frango', 'Bife'],
+        sizeOptions: ['Pequena', 'Grande'],
+        saladOptions: ['Com tempero', 'Sem tempero'],
+      }
+    }
+  },
   props: {
     order: Object,
-    index: Number,
-    packedLunchOptions: Object
+    index: Number
   },
   methods: {
     selectMeat (value, order) {
@@ -63,8 +71,8 @@ export default {
 .card-head {
   margin-left: 8px;
   margin-right: 8px;
-	display: flex; /* Torna o elemento um flex container automaticamente transformando todos os seus filhos diretos em flex itens. */
-	flex-direction: row; /* Faz com que os elementos sejam colocados todos em uma coluna, indo de cima para baixo */
+	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
 }
 

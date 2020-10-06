@@ -1,14 +1,30 @@
 <template>
 <div class="order-screen" :key="keyToReloadScreen">
 	<li v-for="(order, index) in orders" v-bind:key="order.id">
-		<PackedLunchCard v-if="order.itemType === OrderItemTypeEnum.PackedLunch" :order="order" :index="index" :packedLunchOptions="packedLunchOptions" v-on:card-excluded="removeCard($event)"/>
-		<RefrigerantCard v-if="order.itemType === OrderItemTypeEnum.Refrigerant" :order="order" :index="index" :refrigerantOptions="refrigerantOptions" v-on:card-excluded="removeCard($event)"/>
+		<PackedLunchCard 
+			v-if="order.itemType === OrderItemTypeEnum.PackedLunch" 
+			:order="order" 
+			:index="index" 
+			v-on:card-excluded="removeCard($event)"/>
+		<RefrigerantCard 
+			v-if="order.itemType === OrderItemTypeEnum.Refrigerant" 
+			:order="order" 
+			:index="index" 
+			v-on:card-excluded="removeCard($event)"/>
 	</li>
 	<div class="row-div">
-		<GtButton style="width: 49.5%" text="+ Marmita" v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
-		<GtButton style="margin-left: 1%; width: 49.5%" text="+ Refrigerante" v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
+		<GtButton 
+			style="width: 49.5%" 
+			text="+ Marmita" 
+			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
+		<GtButton 
+			style="margin-left: 1%; width: 49.5%" 
+			text="+ Refrigerante" 
+			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
-	<GtButton text="Próxima etapa" v-on:click="finishOrder()"/>
+	<GtButton 
+		text="Próxima etapa" 
+		v-on:click="finishOrder()"/>
 </div>
 </template>
 
@@ -23,19 +39,7 @@ const OrderItemTypeEnum = Object.freeze({
 });
 
 var data = {
-	//TODO: Why this options are here?
-	packedLunchOptions: {
-		meatOptions: ['Frango', 'Bife'],
-    sizeOptions: ['Pequena', 'Grande'],
-    saladOptions: ['Com tempero', 'Sem tempero'],
-	},
-	refrigerantOptions: {
-		refrigerantTypeOptions: ['Coca-cola', 'Fanta laranja', 'Sprite', 'Guaraná Kuat'],
-		refrigerantSizeOptions: ['300ml', '600ml', '1 litro', '2 litros']
-	},
-	orders: [	],
-	keyToReloadScreen: 0,
-	OrderItemTypeEnum
+	
 }
 
 export default {
@@ -45,15 +49,21 @@ export default {
 		RefrigerantCard,
 		GtButton
 	},
-	data: function () { return data },
+	data: function () { 
+		return {
+			orders: [	],
+			keyToReloadScreen: 0,
+			OrderItemTypeEnum
+		}
+	},
 	created: function () {
 		if(!this.orders.length) {
-			this.addItemToOrder(OrderItemTypeEnum.PackedLunch)
+			this.addItemToOrder(OrderItemTypeEnum.PackedLunch);
 		}
 	},
 	methods: {
 		finishOrder: function () {
-			this.$emit('step-completed', this.orders)
+			this.$emit('step-completed', this.orders);
 
 			// console.log('Entrou na função de fazer o pedido')
 			// var orderList = this.orders
@@ -98,7 +108,7 @@ export default {
 			// alert(message)
 		},
 		addItemToOrder: function (itemType) {
-			let newItem = {}
+			let newItem = {};
 
 			if(itemType === OrderItemTypeEnum.PackedLunch) {
 				newItem = this.newPackedLunch();

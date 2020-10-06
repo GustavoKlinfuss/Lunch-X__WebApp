@@ -22,10 +22,17 @@ export default {
   components: {
     GtRadio
   },
+  data: function () {
+    return {
+      refrigerantOptions: {
+        refrigerantTypeOptions: ['Coca-cola', 'Fanta laranja', 'Sprite', 'Guaraná Kuat'],
+        refrigerantSizeOptions: ['300ml', '600ml', '1 litro', '2 litros']
+      }
+    }
+  },
   props: {
     order: Object,
-    index: Number,
-    refrigerantOptions: Object
+    index: Number
   },
   methods: {
     selectRefrigerantType (value, order) {
@@ -55,8 +62,8 @@ export default {
 .card-head {
   margin-left: 8px;
   margin-right: 8px;
-	display: flex; /* Torna o elemento um flex container automaticamente transformando todos os seus filhos diretos em flex itens. */
-	flex-direction: row; /* Faz com que os elementos sejam colocados todos em uma coluna, indo de cima para baixo */
+	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
 }
 
