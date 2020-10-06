@@ -5,7 +5,22 @@
       <b-icon icon="basket"></b-icon>
       Item {{index + 1}} - Marmita
     </label>
-    <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>
+    <!-- <b-button 
+      class="card-remove-button" 
+      variant="danger" 
+      v-on:click="excludeCard(index)">
+      X
+      </b-button> -->
+    <b-button 
+      class="card-remove-button" 
+      variant="secondary" 
+      v-on:click="excludeCard(index)">
+      <b-icon 
+        style="width: 24px; height: 24px;" 
+        shift-v="-1" 
+        shift-h="-3" 
+        icon="trash"></b-icon>
+    </b-button>
   </div>
   
   <label class="legend-label">Carne:</label>
