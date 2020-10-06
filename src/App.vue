@@ -2,8 +2,8 @@
 <div id="app">
   <div class="container">
     <h1 class="header">{{header}}</h1>
-    <OrderScreen v-if="stage === 'OrderScreen'" v-on:step-completed="completeOrder($event)"/>
-    <UserInfoScreen v-if="stage === 'UserInfoScreen'" v-on:step-completed="endOrder($event)"/>
+    <OrderScreen v-if="stage === StagesEnum.OrderScreen" v-on:step-completed="orderCompleted($event)"/>
+    <UserInfoScreen v-if="stage === StagesEnum.UserInfoScreen" v-on:step-completed="userDetailsCompleted($event)"/>
   </div>
 </div>
 </template>
@@ -12,12 +12,19 @@
 import OrderScreen from './app/order-details/OrderScreen.vue'
 import UserInfoScreen from './app/user-details/UserInfoScreen.vue'
 
+const StagesEnum = Object.freeze({"OrderScreen":1, "UserInfoScreen":2});
+const OrderItemTypeEnum = Object.freeze({"PackedLunch":1, "Refrigerant":2});
+
 export default {
   name: 'App',
   data: function () {
     return {
-      stage: 'OrderScreen',
+      stage: StagesEnum.OrderScreen,
       header: 'Tempeadori - Faça seu pedido',
+      StagesEnum,
+      OrderItemTypeEnum,
+      order: {type: Object},
+      userDetails: {type: Object}
     }
   },
   components: {
@@ -25,15 +32,122 @@ export default {
     UserInfoScreen
   },
   methods: {
-    completeOrder: function (event) {
-      console.log('chegou no metodo');
-      console.log(event);
-
-      this.stage = 'UserInfoScreen'
+    orderCompleted: function (order) {
+      this.order = order;
+      this.goToNextStep();
     },
-    endOrder: function (event) {
-      console.log(event);
-      alert('pedidoFinalizado');
+    goToNextStep: function () {
+      this.stage = StagesEnum.UserInfoScreen;
+    },
+    userDetailsCompleted: function (userDetails) {
+      this.userDetails = userDetails;
+      this.finishOrder();
+    },
+    getPackedLunchs: function () {
+      return this.order
+        .filter(e => e.itemType === OrderItemTypeEnum.PackedLunch)
+        .map(e => {
+          return {
+              size: e.size,
+              meat: e.meat,
+              salad: e.salad
+            }
+        })
+    },
+    getRefrigerants: function () {
+      return this.order
+        .filter(e => e.itemType === OrderItemTypeEnum.Refrigerant)
+        .map(e => {
+          return {
+              type: e.itemType,
+              refrigerantSize: e.refrigerantSize,
+              refrigerantType: e.refrigerantType
+            }
+        })
+    },
+    finishOrder: function () {
+      var orderListByItemType = {
+        PackedLunch: this.getPackedLunchs(),
+        Refrigerant: this.getRefrigerants()
+      }
+
+      const packedLunchMessage = this.getMessageFromPackedLunch(orderListByItemType);
+      const saladMessage = this.getMessageFromSalad(orderListByItemType);
+      const refrigerantMessage = this.getMessageFromRefrigerant(orderListByItemType);
+
+      alert("Seu pedido:\n\n" + packedLunchMessage + "\n" + saladMessage + "\n" + refrigerantMessage);
+    },
+
+    getMessageFromPackedLunch: function (orderListByItemType) {
+      var message = '';
+      var listened = [];
+
+      orderListByItemType.PackedLunch.forEach(pL => {
+        var packedLunchInList = listened.find(e => e.meat === pL.meat && e.size === pL.size);
+        packedLunchInList 
+          ? packedLunchInList.count += 1
+          : listened.push({meat: pL.meat, size: pL.size, count: 1});
+      })
+
+      listened.forEach(e => {
+        message += e.count + " " + e.size + " " + e.meat + "\n";
+      })
+
+      return message;
+    },
+
+    getMessageFromSalad: function (orderListByItemType) {
+      var message = '';
+      var listened = [];
+
+      orderListByItemType.PackedLunch.forEach(pL => {
+        var packedLunchInList = listened.find(e => e.salad === pL.salad);
+        packedLunchInList 
+          ? packedLunchInList.count += 1
+          : listened.push({salad: pL.salad, count: 1});
+      })
+
+      listened.forEach(e => {
+        message += e.count + " Saladas " + e.salad.toLowerCase() + "\n";
+      })
+
+      return message;
+    },
+
+    getMessageFromRefrigerant: function (orderListByItemType) {
+      var message = '';
+      var listened = [];
+
+      orderListByItemType.Refrigerant.forEach(refrigerant => {
+        var refrigerantInList = listened.find(e => e.refrigerantType === refrigerant.refrigerantType && e.refrigerantSize === refrigerant.refrigerantSize);
+        refrigerantInList 
+          ? refrigerantInList.count += 1
+          : listened.push({refrigerantType: refrigerant.refrigerantType, refrigerantSize: refrigerant.refrigerantSize, count: 1});
+      })
+
+      listened.forEach(e => {
+        message += e.count + " " + e.refrigerantType + " " + e.refrigerantSize + "\n";
+      })
+
+      return message;
+    },
+
+    getMatrixPackedLunchBySizeAndMeat: function (packedLunchs) {
+      var matrixSizeMeat = {}
+
+      packedLunchs.forEach(e => {
+        const hasThisSizeKey = matrixSizeMeat[e.size];
+        
+        if(!hasThisSizeKey) matrixSizeMeat[e.size] = {};
+
+        const hasThisMeatKey = matrixSizeMeat[e.size][e.meat];
+
+        hasThisMeatKey
+          ? matrixSizeMeat[e.size][e.meat] += 1
+          : matrixSizeMeat[e.size][e.meat] = 1;
+      });
+      
+      return matrixSizeMeat;
     }
   }
 }

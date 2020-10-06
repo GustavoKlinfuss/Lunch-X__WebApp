@@ -60,54 +60,11 @@ export default {
 	methods: {
 		finishOrder: function () {
 			this.$emit('step-completed', this.orders);
-
-			// console.log('Entrou na função de fazer o pedido')
-			// var orderList = this.orders
-			// 	.map(order => {
-			// 		return {
-			// 			size: order.size,
-			// 			meat: order.meat,
-			// 			salad: order.salad
-			// 		}
-			// 	});
-
-			// console.log('Mapeou o pedido para um objeto mais simples')
-
-			// const meatOptions = this.packedLunchOptions.meatOptions;
-			// const sizeOptions = this.packedLunchOptions.sizeOptions;
-			// const saladOptions = this.packedLunchOptions.saladOptions;
-			// var message = ""
-			// var range = [0, 1];
-
-			// range.forEach(i => {
-			// 	range.forEach(j => {
-			// 		const filteredRequest = orderList
-			// 			.filter(order => order.meat === meatOptions[i] && order.size === sizeOptions[j])
-
-			// 		if (filteredRequest.length){
-			// 			message += filteredRequest.length + ' ' + sizeOptions[j] + ' ' + meatOptions[i] + '\n' 
-			// 		}
-			// 	})
-			// })
-
-			// message += "\n"
-
-			// range.forEach(i => {
-			// 	const salad = orderList.filter(order => order.salad === saladOptions[i]);
-
-			// 	if (salad.length) {
-			// 		message += salad.length + ' Salada ' + saladOptions[i].toLowerCase() + '\n';
-			// 	}
-			// })
-
-			// console.log('Fez a mensagem')
-			// alert(message)
 		},
 
 		addItemToOrder: function (itemType) {
 			const newItem = this.getNewItemByItemType(itemType);
 			this.orders.push(newItem);
-			console.log('Foi adicionado um pedido');
 		},
 
 		getNewItemByItemType: function (itemType) {
@@ -137,7 +94,6 @@ export default {
 		removeCard: function (index) {
 			this.orders.splice(index, 1);
 			this.keyToReloadScreen += 1;
-			console.log('Foi removido um pedido');
 		}
   }
 };

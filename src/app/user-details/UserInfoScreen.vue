@@ -4,20 +4,16 @@
     <span>Dados para contato e entrega</span><br>
 
     <div class="card-content">
-      <GtInput label="Nome:" placeholder="Nome" v-model="form.name"/>
-      <GtInput label="Rua:" v-model="form.addressStreet"/>
+      <GtInput label="Nome:" placeholder="Nome" v-model="userDetails.name"/>
+      <GtInput label="Rua:" v-model="userDetails.addressStreet"/>
       <div class="row-div">
-        <GtInput style="width: 49%" label="Número:" v-model="form.addressNumber"/>
-        <GtInput style="margin-left: 2%; width: 49%" label="Complemento:" v-model="form.addressComplement"/>
+        <GtInput style="width: 49%" label="Número:" v-model="userDetails.addressNumber"/>
+        <GtInput style="margin-left: 2%; width: 49%" label="Complemento:" v-model="userDetails.addressComplement"/>
       </div>
-      <GtInput label="Telefone:" v-model="form.phone"/>
+      <GtInput label="Telefone:" v-model="userDetails.phone"/>
     </div>
   </div>
-  <GtButton text="Fazer pedido" v-on:click="submitInfo()"/>
-
-  <span>Seu nome: {{form.name}}</span>
-  <span>Seu endereço: {{form.addressStreet}}, {{form.addressNumber}} - {{form.addressComplement}}</span>
-  <span>Seu telefone: {{form.phone}}</span>
+  <GtButton text="Fazer pedido" v-on:click="finishUserDetails()"/>
 </div>
 </template>
 
@@ -32,7 +28,7 @@ export default {
   },
   data: function () {
     return {
-      form: {
+      userDetails: {
         name: '',
         addressStreet: '',
         addressNumber: '',
@@ -42,9 +38,8 @@ export default {
     }
   },
   methods: {
-    submitInfo: function () {
-      console.log('submitou')
-      this.$emit('step-completed', this.form);
+    finishUserDetails: function () {
+      this.$emit('step-completed', this.userDetails);
     }
   }
   
@@ -63,9 +58,5 @@ export default {
 
 .card-content {
   font-size: 14px;
-}
-
-.form-control::-webkit-input-placeholder {
-  color: #ccc;
 }
 </style>
