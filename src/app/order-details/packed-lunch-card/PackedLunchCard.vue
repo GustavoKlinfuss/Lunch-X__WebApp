@@ -2,6 +2,7 @@
 <div class="card">
   <div class="card-head">
     <label class="card-title">
+      <b-icon icon="basket"></b-icon>
       Item {{index + 1}} - Marmita
     </label>
     <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>

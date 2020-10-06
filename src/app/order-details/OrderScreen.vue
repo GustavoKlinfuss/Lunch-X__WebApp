@@ -15,15 +15,15 @@
 	<div class="row-div">
 		<GtButton 
 			style="width: 49.5%" 
-			text="+ Marmita" 
+			text="Adicionar Marmita" 
 			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
 		<GtButton 
 			style="margin-left: 1%; width: 49.5%" 
-			text="+ Refrigerante" 
+			text="Adicionar Refrigerante"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
 	<GtButton 
-		text="Próxima etapa" 
+		text="Próxima etapa"
 		v-on:click="finishOrder()"/>
 </div>
 </template>

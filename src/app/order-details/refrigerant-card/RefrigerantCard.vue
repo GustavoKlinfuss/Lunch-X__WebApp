@@ -1,7 +1,10 @@
 <template>
 <div class="card">
   <div class="card-head">
-    <label class="card-title">Item {{index + 1}} - Refrigerante</label>
+    <label class="card-title">
+      <b-icon icon="cup-straw" shift-v="2"></b-icon>
+      Item {{index + 1}} - Refrigerante
+    </label>
     <b-button 
       class="card-remove-button" 
       variant="danger" 
@@ -64,7 +67,7 @@ export default {
 
 <style scoped>
 .card {
-  background-color: rgb(210, 210, 210);
+  background-color: rgb(235, 235, 235);
   border-color: rgb(0, 50, 107);
   padding-bottom: 8px;
   margin-bottom: 8px;

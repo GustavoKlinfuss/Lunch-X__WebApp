@@ -1,11 +1,15 @@
 <template>
-<b-button size="lg" class="gt-btn" v-on:click="click()">{{text}}</b-button>
+<b-button size="lg" class="gt-btn" v-on:click="click()">
+  <b-icon v-if="icon" :icon="icon"></b-icon>
+  {{text}}
+</b-button>
 </template>
 
 <script>
 export default {
   props: {
-    text: String
+    text: String,
+    icon: String
   },
   methods: {
     click: function () {
