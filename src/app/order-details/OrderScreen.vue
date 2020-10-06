@@ -38,10 +38,6 @@ const OrderItemTypeEnum = Object.freeze({
 	"Refrigerant":2
 });
 
-var data = {
-	
-}
-
 export default {
 	name: 'OrderScreen',
 	components: {
