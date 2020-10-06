@@ -103,21 +103,20 @@ export default {
 			// console.log('Fez a mensagem')
 			// alert(message)
 		},
+
 		addItemToOrder: function (itemType) {
-			let newItem = {};
-
-			if(itemType === OrderItemTypeEnum.PackedLunch) {
-				newItem = this.newPackedLunch();
-			}
-			else if(itemType === OrderItemTypeEnum.Refrigerant) {
-				newItem = this.newRefrigerant();
-			} else {
-				throw "Não foi selecionado nem marmita, nem refrigerante";
-			}
-
-			this.orders.push(newItem)
+			const newItem = this.getNewItemByItemType(itemType);
+			this.orders.push(newItem);
 			console.log('Foi adicionado um pedido');
 		},
+
+		getNewItemByItemType: function (itemType) {
+			if(itemType === OrderItemTypeEnum.PackedLunch) return this.newPackedLunch();
+			if(itemType === OrderItemTypeEnum.Refrigerant) return this.newRefrigerant();
+			
+			throw "Não foi selecionado nem marmita, nem refrigerante";
+		},
+		
 		newPackedLunch: function() {
 			return {
 				itemType: OrderItemTypeEnum.PackedLunch,
@@ -126,6 +125,7 @@ export default {
 				salad: ''
 			};
 		},
+
 		newRefrigerant: function() {
 			return {
 				itemType: OrderItemTypeEnum.Refrigerant,
@@ -133,6 +133,7 @@ export default {
 				refrigerantType: ''
 			};
 		},
+		
 		removeCard: function (index) {
 			this.orders.splice(index, 1);
 			this.keyToReloadScreen += 1;
