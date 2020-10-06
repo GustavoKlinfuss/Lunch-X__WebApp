@@ -58,9 +58,9 @@ export default {
     margin-top: 8px;
 }
 
-.custom-control-input:checked ~ .custom-control-label::before {
-    background-color: rgb(0, 50, 107) !important;
-    border-color: rgb(0, 50, 107) !important;
-}
+/* .custom-control-input:checked ~ .custom-control-label::before {
+    background-color:black !important;
+    border-color:black !important;
+} */
 
 </style>

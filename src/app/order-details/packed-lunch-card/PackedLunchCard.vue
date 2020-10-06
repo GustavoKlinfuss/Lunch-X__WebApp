@@ -1,7 +1,9 @@
 <template>
 <div class="card">
   <div class="card-head">
-    <label class="card-title"><strong>Item {{index + 1}} - Marmita</strong></label>
+    <label class="card-title">
+      Item {{index + 1}} - Marmita
+    </label>
     <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>
   </div>
   

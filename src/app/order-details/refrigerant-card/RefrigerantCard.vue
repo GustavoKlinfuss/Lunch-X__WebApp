@@ -1,16 +1,28 @@
 <template>
 <div class="card">
   <div class="card-head">
-    <label class="card-title"><strong>Item {{index + 1}} - Refrigerante</strong></label>
-    <b-button class="card-remove-button" variant="danger" v-on:click="excludeCard(index)">X</b-button>
+    <label class="card-title">Item {{index + 1}} - Refrigerante</label>
+    <b-button 
+      class="card-remove-button" 
+      variant="danger" 
+      v-on:click="excludeCard(index)">
+      X
+      </b-button>
   </div>
   
   <label class="legend-label">Opção:</label>
-  <GtRadio :options="refrigerantOptions.refrigerantTypeOptions" v-on:optionselected="selectRefrigerantType($event, order)"
-    :default="refrigerantOptions.refrigerantTypeOptions[0]" :preselectedoption="order.refrigerantType"></GtRadio>
+  <GtRadio 
+    :options="refrigerantOptions.refrigerantTypeOptions" 
+    v-on:optionselected="selectRefrigerantType($event, order)"
+    :default="refrigerantOptions.refrigerantTypeOptions[0]" 
+    :preselectedoption="order.refrigerantType"></GtRadio>
+
   <label class="legend-label">Tamanho:</label>
-  <GtRadio :options="refrigerantOptions.refrigerantSizeOptions" v-on:optionselected="selectRefrigerantSize($event, order)" 
-    :default="refrigerantOptions.refrigerantSizeOptions[0]" :preselectedoption="order.refrigerantSize"></GtRadio>
+  <GtRadio 
+    :options="refrigerantOptions.refrigerantSizeOptions"
+    v-on:optionselected="selectRefrigerantSize($event, order)" 
+    :default="refrigerantOptions.refrigerantSizeOptions[0]"
+    :preselectedoption="order.refrigerantSize"></GtRadio>
 </div>
 </template>
 
@@ -52,7 +64,7 @@ export default {
 
 <style scoped>
 .card {
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(210, 210, 210);
   border-color: rgb(0, 50, 107);
   padding-bottom: 8px;
   margin-bottom: 8px;
