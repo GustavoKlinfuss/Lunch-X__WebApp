@@ -1,6 +1,6 @@
 <template>
-  <b-form-group :label="label" label-for="inp">
-    <b-form-input id="inp" v-model="inputValue" :placeholder="placeholder" trim></b-form-input>
+  <b-form-group :label="label">
+    <b-form-input v-model="inputValue" :placeholder="placeholder" trim></b-form-input>
   </b-form-group>
 </template>
 
