@@ -1,9 +1,13 @@
 <template>
 <div class="order-screen" :key="keyToReloadScreen">
 	<li v-for="(order, index) in orders" v-bind:key="order.id">
-		<PackedLunchCard :order="order" :index="index" :packedLunchOptions="packedLunchOptions" v-on:card-excluded="removeCard($event)"/>
+		<PackedLunchCard v-if="order.itemType === OrderItemTypeEnum.PackedLunch" :order="order" :index="index" :packedLunchOptions="packedLunchOptions" v-on:card-excluded="removeCard($event)"/>
+		<span v-if="order.itemType === OrderItemTypeEnum.Refrigerant">Refrigerante</span>
 	</li>
-	<GtButton text="Adicionar mais marmita" v-on:click="addItemToOrder()"/>
+	<div class="row-div">
+		<GtButton style="width: 49.5%" text="+ Marmita" v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
+		<GtButton style="margin-left: 1%; width: 49.5%" text="+ Refrigerante" v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
+	</div>
 	<GtButton text="Próxima etapa" v-on:click="finishOrder()"/>
 </div>
 </template>
@@ -12,6 +16,11 @@
 import PackedLunchCard from './packed-lunch-card/PackedLunchCard.vue'
 import GtButton from '../../components/GtButton.vue'
 
+const OrderItemTypeEnum = Object.freeze({
+	"PackedLunch":1,
+	"Refrigerant":2
+});
+
 var data = {
 	packedLunchOptions: {
 		meatOptions: ['Frango', 'Bife'],
@@ -19,7 +28,8 @@ var data = {
     saladOptions: ['Com tempero', 'Sem tempero'],
 	},
 	orders: [	],
-	keyToReloadScreen: 0
+	keyToReloadScreen: 0,
+	OrderItemTypeEnum
 }
 
 export default {
@@ -27,7 +37,7 @@ export default {
 	data: function () { return data },
 	created: function () {
 		if(!this.orders.length) {
-			this.addItemToOrder()
+			this.addItemToOrder(OrderItemTypeEnum.PackedLunch)
 		}
 	},
 	components: {
@@ -35,7 +45,7 @@ export default {
 		GtButton
 	},
 	methods: {
-		finishOrder () {
+		finishOrder: function () {
 			this.$emit('step-completed', this.orders)
 
 			// console.log('Entrou na função de fazer o pedido')
@@ -80,15 +90,35 @@ export default {
 			// console.log('Fez a mensagem')
 			// alert(message)
 		},
-		addItemToOrder: function () {
-			const newItem = {
+		addItemToOrder: function (itemType) {
+			let newItem = {}
+
+			if(itemType === OrderItemTypeEnum.PackedLunch) {
+				newItem = this.newPackedLunch();
+			}
+			else if(itemType === OrderItemTypeEnum.Refrigerant) {
+				newItem = this.newRefrigerant();
+			} else {
+				throw "Não foi selecionado nem marmita, nem refrigerante";
+			}
+
+			this.orders.push(newItem)
+			console.log('Foi adicionado um pedido');
+		},
+		newPackedLunch: function() {
+			return {
+				itemType: OrderItemTypeEnum.PackedLunch,
 				meat: '',
 				size: '',
 				salad: ''
 			};
-
-			this.orders.push(newItem)
-			console.log('Foi adicionado um pedido');
+		},
+		newRefrigerant: function() {
+			return {
+				itemType: OrderItemTypeEnum.Refrigerant,
+				size: '',
+				refrigerantType: ''
+			};
 		},
 		removeCard: function (index) {
 			this.orders.splice(index, 1);
