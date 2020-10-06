@@ -68,10 +68,8 @@ export default {
 <style scoped>
 .card {
   background-color: rgb(235, 235, 235);
-  border-color: rgb(0, 50, 107);
   padding-bottom: 8px;
   margin-bottom: 8px;
-  border-radius: 0px;
 }
 
 .card-head {
@@ -86,6 +84,7 @@ export default {
 	font-size: 24px;
   margin-top: 8px;
   margin-left: 8px;
+  font-weight: bolder;
 }
 
 .card-remove-button {
@@ -93,8 +92,6 @@ export default {
   font-size: 14px;
   width: 40px;
   height: 40px;
-  border: 1px solid rgb(0, 50, 107);
-  border-radius: 0px;
 }
 
 .legend-label {

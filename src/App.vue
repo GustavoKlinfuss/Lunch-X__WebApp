@@ -1,5 +1,5 @@
 <template>
-<div id="app" >
+<div id="app">
   <div class="container">
     <h1 class="header">{{header}}</h1>
     <OrderScreen v-if="stage === 'OrderScreen'" v-on:step-completed="completeOrder($event)"/>
@@ -51,7 +51,8 @@ html, #app {
 	margin-top: 8px;
 	padding: 12px;
 	background-color: rgb(235, 235, 235);
-  border: 1px solid rgb(0, 50, 107);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
 }
 
 .row-div {
