@@ -2,7 +2,7 @@
 <div class="order-screen" :key="keyToReloadScreen">
 	<li v-for="(order, index) in orders" v-bind:key="order.id">
 		<PackedLunchCard v-if="order.itemType === OrderItemTypeEnum.PackedLunch" :order="order" :index="index" :packedLunchOptions="packedLunchOptions" v-on:card-excluded="removeCard($event)"/>
-		<span v-if="order.itemType === OrderItemTypeEnum.Refrigerant">Refrigerante</span>
+		<RefrigerantCard v-if="order.itemType === OrderItemTypeEnum.Refrigerant" :order="order" :index="index" :refrigerantOptions="refrigerantOptions" v-on:card-excluded="removeCard($event)"/>
 	</li>
 	<div class="row-div">
 		<GtButton style="width: 49.5%" text="+ Marmita" v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
@@ -14,6 +14,7 @@
 
 <script>
 import PackedLunchCard from './packed-lunch-card/PackedLunchCard.vue'
+import RefrigerantCard from './refrigerant-card/RefrigerantCard.vue'
 import GtButton from '../../components/GtButton.vue'
 
 const OrderItemTypeEnum = Object.freeze({
@@ -22,10 +23,15 @@ const OrderItemTypeEnum = Object.freeze({
 });
 
 var data = {
+	//TODO: Why this options are here?
 	packedLunchOptions: {
 		meatOptions: ['Frango', 'Bife'],
     sizeOptions: ['Pequena', 'Grande'],
     saladOptions: ['Com tempero', 'Sem tempero'],
+	},
+	refrigerantOptions: {
+		refrigerantTypeOptions: ['Coca-cola', 'Fanta laranja', 'Sprite', 'Guaraná Kuat'],
+		refrigerantSizeOptions: ['300ml', '600ml', '1 litro', '2 litros']
 	},
 	orders: [	],
 	keyToReloadScreen: 0,
@@ -34,15 +40,16 @@ var data = {
 
 export default {
 	name: 'OrderScreen',
+	components: {
+		PackedLunchCard,
+		RefrigerantCard,
+		GtButton
+	},
 	data: function () { return data },
 	created: function () {
 		if(!this.orders.length) {
 			this.addItemToOrder(OrderItemTypeEnum.PackedLunch)
 		}
-	},
-	components: {
-		PackedLunchCard,
-		GtButton
 	},
 	methods: {
 		finishOrder: function () {
@@ -116,7 +123,7 @@ export default {
 		newRefrigerant: function() {
 			return {
 				itemType: OrderItemTypeEnum.Refrigerant,
-				size: '',
+				refrigerantSize: '',
 				refrigerantType: ''
 			};
 		},
