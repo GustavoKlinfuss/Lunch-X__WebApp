@@ -11,9 +11,7 @@
 <script>
 import OrderScreen from './app/order-details/OrderScreen.vue'
 import UserInfoScreen from './app/user-details/UserInfoScreen.vue'
-
-const StagesEnum = Object.freeze({"OrderScreen":1, "UserInfoScreen":2});
-const OrderItemTypeEnum = Object.freeze({"PackedLunch":1, "Refrigerant":2});
+import { OrderItemTypeEnum, StagesEnum } from './variables/enums.js'
 
 export default {
   name: 'App',

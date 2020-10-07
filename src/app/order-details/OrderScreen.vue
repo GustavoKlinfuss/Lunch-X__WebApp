@@ -32,11 +32,7 @@
 import PackedLunchCard from './packed-lunch-card/PackedLunchCard.vue'
 import RefrigerantCard from './refrigerant-card/RefrigerantCard.vue'
 import GtButton from '../../components/GtButton.vue'
-
-const OrderItemTypeEnum = Object.freeze({
-	"PackedLunch":1,
-	"Refrigerant":2
-});
+import { OrderItemTypeEnum } from '../../variables/enums.js'
 
 export default {
 	name: 'OrderScreen',
