@@ -73,7 +73,7 @@ export default {
       const saladMessage = this.getMessageFromSalad(orderListByItemType);
       const refrigerantMessage = this.getMessageFromRefrigerant(orderListByItemType);
 
-      alert("Seu pedido:\n\n" + packedLunchMessage + "\n" + saladMessage + "\n" + refrigerantMessage);
+      alert(`Seu pedido:\n\n${packedLunchMessage}\n${saladMessage}\n${refrigerantMessage}`);
     },
 
     getMessageFromPackedLunch: function (orderListByItemType) {
@@ -88,7 +88,7 @@ export default {
       })
 
       listened.forEach(e => {
-        message += e.count + " " + e.size + " " + e.meat + "\n";
+        message += `${e.count} ${e.size} ${e.meat}\n`;
       })
 
       return message;
@@ -106,7 +106,7 @@ export default {
       })
 
       listened.forEach(e => {
-        message += e.count + " Saladas " + e.salad.toLowerCase() + "\n";
+        message += `${e.count} Saladas ${e.salad.toLowerCase()}\n`;
       })
 
       return message;
@@ -124,28 +124,10 @@ export default {
       })
 
       listened.forEach(e => {
-        message += e.count + " " + e.refrigerantType + " " + e.refrigerantSize + "\n";
+        message += `${e.count} ${e.refrigerantType} ${e.refrigerantSize}\n`;
       })
 
       return message;
-    },
-
-    getMatrixPackedLunchBySizeAndMeat: function (packedLunchs) {
-      var matrixSizeMeat = {}
-
-      packedLunchs.forEach(e => {
-        const hasThisSizeKey = matrixSizeMeat[e.size];
-        
-        if(!hasThisSizeKey) matrixSizeMeat[e.size] = {};
-
-        const hasThisMeatKey = matrixSizeMeat[e.size][e.meat];
-
-        hasThisMeatKey
-          ? matrixSizeMeat[e.size][e.meat] += 1
-          : matrixSizeMeat[e.size][e.meat] = 1;
-      });
-      
-      return matrixSizeMeat;
     }
   }
 }
