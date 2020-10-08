@@ -148,6 +148,7 @@ html, main {
   color: white;
   margin-bottom: 8px;
   border-bottom: 1px solid white;
+  text-align: center;
 }
 
 .row-div {
