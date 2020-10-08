@@ -1,12 +1,14 @@
 <template>
-<div class="order-screen" :key="keyToReloadScreen">
+<div class="column-div" :key="keyToReloadScreen">
 	<li v-for="(order, index) in orders" v-bind:key="order.id">
 		<packed-lunch-card 
+			class="order-card"
 			v-if="order.itemType === OrderItemTypeEnum.PackedLunch" 
 			:order="order" 
 			:index="index" 
 			v-on:card-excluded="removeCard($event)"/>
 		<refrigerant-card 
+			class="order-card"
 			v-if="order.itemType === OrderItemTypeEnum.Refrigerant" 
 			:order="order" 
 			:index="index" 
@@ -14,11 +16,11 @@
 	</li>
 	<div class="row-div">
 		<gt-button 
-			style="width: 49.5%" 
+			style="width: 49%" 
 			text="Adicionar Marmita" 
 			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
 		<gt-button 
-			style="margin-left: 1%; width: 49.5%" 
+			style="margin-left: 2%; width: 49%" 
 			text="Adicionar Refrigerante"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
@@ -96,15 +98,33 @@ export default {
 </script>
 
 <style scoped>
-.order-screen {
-	display: flex;
-	flex-direction: column;
+.order-card {
+  background-color: rgb(235, 235, 235);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
-.gt-btn {
-	margin: 4px 0px 4px 0px;
-	border-radius: 0px;
-	background-color:  rgb(0, 50, 107);
-	border: 1px solid white;
+.order-card >>> .card-head {
+  margin-left: 8px;
+  margin-right: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.order-card >>> .card-title {
+	font-size: 20px;
+  margin-top: 8px;
+  margin-left: 8px;
+  font-weight: bolder;
+}
+
+.order-card >>> .card-remove-button {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.order-card >>> .legend-label {
+  margin: 0px 0px 0px 32px;
 }
 </style>

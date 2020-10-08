@@ -1,11 +1,11 @@
 <template>
-<div id="app">
+<main>
+  <header class="header">{{header}}</header>
   <div class="container">
-    <h1 class="header">{{header}}</h1>
     <order-screen v-if="stage === StagesEnum.OrderScreen" v-on:step-completed="orderCompleted($event)"/>
     <user-info-screen v-if="stage === StagesEnum.UserInfoScreen" v-on:step-completed="userDetailsCompleted($event)"/>
   </div>
-</div>
+</main>
 </template>
 
 <script>
@@ -134,7 +134,7 @@ export default {
 </script>
 
 <style>
-html, #app {
+html, main {
   background-color: rgb(223, 223, 223);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color:rgb(109, 109, 109);
@@ -142,11 +142,12 @@ html, #app {
 }
 
 .header {
-	margin-top: 8px;
-	padding: 12px;
-	background-color: rgb(235, 235, 235);
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 4px;
+	background-color:  rgb(0, 50, 107);
+  padding: 16px 16px;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 8px;
+  border-bottom: 1px solid white;
 }
 
 .row-div {

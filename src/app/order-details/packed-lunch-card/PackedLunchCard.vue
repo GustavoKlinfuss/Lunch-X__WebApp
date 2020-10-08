@@ -14,7 +14,7 @@
         shift-v="-1" 
         shift-h="-3" 
         icon="trash"></b-icon>
-    Remover marmita
+      Remover marmita
     </b-button>
   </div>
   
@@ -87,35 +87,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.card {
-  background-color: rgb(235, 235, 235);
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-}
-
-.card-head {
-  margin-left: 8px;
-  margin-right: 8px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.card-title {
-	font-size: 24px;
-  margin-top: 8px;
-  margin-left: 8px;
-  font-weight: bolder;
-}
-
-.card-remove-button {
-  margin-top: 8px;;
-  font-size: 14px;
-}
-
-.legend-label {
-  margin: 0px 0px 0px 32px;
-}
-</style>

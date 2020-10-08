@@ -1,7 +1,7 @@
 <template>
 <div class="column-div">
   <div class="card">
-    <span>Dados para contato e entrega</span><br>
+    <label>Dados para contato e entrega</label><br>
 
     <div class="card-content">
       <gt-input label="Nome:" placeholder="Nome" v-model="userDetails.name"/>
@@ -49,10 +49,8 @@ export default {
 <style scoped>
 .card {
   background-color: rgb(235, 235, 235);
-  border-color: rgb(0, 50, 107);
   padding-bottom: 8px;
   margin-bottom: 8px;
-  border-radius: 0px;
   padding: 16px;
 }
 
