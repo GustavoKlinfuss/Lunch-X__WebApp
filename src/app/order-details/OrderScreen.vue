@@ -113,18 +113,15 @@ export default {
 }
 
 .order-card >>> .card-title {
-	font-size: 20px;
-  margin-top: 8px;
-  margin-left: 8px;
-  font-weight: bolder;
+  margin-top: 12px;
+  margin-left: 4px;
 }
 
 .order-card >>> .card-remove-button {
   margin-top: 8px;
-  font-size: 14px;
 }
 
-.order-card >>> .legend-label {
-  margin: 0px 0px 0px 32px;
+.order-card >>> .card-content {
+	margin-left: 32px;
 }
 </style>

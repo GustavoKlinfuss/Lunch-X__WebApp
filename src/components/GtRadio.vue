@@ -39,11 +39,11 @@ export default {
       this.$emit('optionselected', event);
     },
     selectRadioClass : function (option) {
-      const classOfRadio = option === this.selectedValue
+      const radioClass = option === this.selectedValue
         ? 'radio-selected gtRadioButton'
         : 'gtRadioButton';
 
-      return classOfRadio;
+      return radioClass;
     }
   }
 };
@@ -55,17 +55,17 @@ export default {
 }
 
 .gtRadioButtonGroup {
-    margin-left: 56px;
+  margin-left: 16px;
 }
 
 .gtRadioButton {
-    margin-top: 4px;
-    margin-bottom: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 /* .custom-control-input:checked ~ .custom-control-label::before {
-    background-color:black !important;
-    border-color:black !important;
+  background-color:black !important;
+  border-color:black !important;
 } */
 
 </style>

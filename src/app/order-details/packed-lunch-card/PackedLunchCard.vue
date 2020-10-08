@@ -1,54 +1,53 @@
 <template>
 <div class="card">
   <div class="card-head">
-    <label class="card-title">
+    <h5 class="card-title">
       <b-icon icon="basket"></b-icon>
       Item {{index + 1}} - Marmita
-    </label>
+    </h5>
     <b-button 
       class="card-remove-button" 
       variant="danger" 
       v-on:click="excludeCard(index)">
-      <b-icon 
-        style="width: 20px; height: 20px;" 
-        shift-v="-1" 
-        shift-h="-3" 
-        icon="trash"></b-icon>
-      Remover marmita
+      <b-icon icon="trash"></b-icon>
+      <span>Remover</span>
     </b-button>
   </div>
-  
-  <label class="legend-label">Carne:</label>
-  <gt-radio 
-    :options="packedLunchOptions.meatOptions" 
-    v-on:optionselected="selectMeat($event, order)"
-    :default="packedLunchOptions.meatOptions[0]" 
-    :preselectedoption="order.meat"/>
+  <div class="card-content">
+    <gt-label text="Carne:"/>
+    <gt-radio 
+      :options="packedLunchOptions.meatOptions" 
+      v-on:optionselected="selectMeat($event, order)"
+      :default="packedLunchOptions.meatOptions[0]" 
+      :preselectedoption="order.meat"/>
 
-  <label class="legend-label">Tamanho:</label>
-  <gt-radio 
-    :options="packedLunchOptions.sizeOptions" 
-    v-on:optionselected="selectSize($event, order)" 
-    :default="packedLunchOptions.sizeOptions[0]" 
-    :preselectedoption="order.size"/>
+    <gt-label text="Tamanho:"/>
+    <gt-radio 
+      :options="packedLunchOptions.sizeOptions" 
+      v-on:optionselected="selectSize($event, order)" 
+      :default="packedLunchOptions.sizeOptions[0]" 
+      :preselectedoption="order.size"/>
 
-  <label class="legend-label">Salada:</label>
-  <gt-radio 
-    :options="packedLunchOptions.saladOptions" 
-    v-on:optionselected="selectSalad($event, order)" 
-    :default="packedLunchOptions.saladOptions[0]" 
-    :preselectedoption="order.salad"/>
+    <gt-label text="Salada:"/>
+    <gt-radio 
+      :options="packedLunchOptions.saladOptions" 
+      v-on:optionselected="selectSalad($event, order)" 
+      :default="packedLunchOptions.saladOptions[0]" 
+      :preselectedoption="order.salad"/>
+  </div>
 </div>
 </template>
 
 <script>
 import GtRadio from '../../../components/GtRadio.vue'
+import GtLabel from '../../../components/GtLabel.vue'
 import { RestaurantMenu } from '../../../variables/enums.js'
 
 export default {
   name: 'RequestCard',
   components: {
-    GtRadio
+    GtRadio,
+    GtLabel
   },
   data: function () {
     return {

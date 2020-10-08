@@ -1,46 +1,45 @@
 <template>
 <div class="card">
   <div class="card-head">
-    <label class="card-title">
+    <h5 class="card-title">
       <b-icon icon="cup-straw" shift-v="2"></b-icon>
       Item {{index + 1}} - Refrigerante
-    </label>
+    </h5>
     <b-button 
       class="card-remove-button" 
       variant="danger" 
       v-on:click="excludeCard(index)">
-      <b-icon 
-        style="width: 20px; height: 20px;" 
-        shift-v="-1" 
-        shift-h="-3" 
-        icon="trash"></b-icon>
-      Remover refrigerante
+      <b-icon icon="trash"></b-icon>
+      <span>Remover</span>
     </b-button>
   </div>
-  
-  <label class="legend-label">Opção:</label>
-  <GtRadio 
-    :options="refrigerantOptions.refrigerantTypeOptions" 
-    v-on:optionselected="selectRefrigerantType($event, order)"
-    :default="refrigerantOptions.refrigerantTypeOptions[0]" 
-    :preselectedoption="order.refrigerantType"></GtRadio>
+  <div class="card-content">
+    <gt-label text="Opção:"/>
+    <GtRadio 
+      :options="refrigerantOptions.refrigerantTypeOptions" 
+      v-on:optionselected="selectRefrigerantType($event, order)"
+      :default="refrigerantOptions.refrigerantTypeOptions[0]" 
+      :preselectedoption="order.refrigerantType"></GtRadio>
 
-  <label class="legend-label">Tamanho:</label>
-  <GtRadio 
-    :options="refrigerantOptions.refrigerantSizeOptions"
-    v-on:optionselected="selectRefrigerantSize($event, order)" 
-    :default="refrigerantOptions.refrigerantSizeOptions[0]"
-    :preselectedoption="order.refrigerantSize"></GtRadio>
+    <gt-label text="Tamanho:"/>
+    <GtRadio 
+      :options="refrigerantOptions.refrigerantSizeOptions"
+      v-on:optionselected="selectRefrigerantSize($event, order)" 
+      :default="refrigerantOptions.refrigerantSizeOptions[0]"
+      :preselectedoption="order.refrigerantSize"></GtRadio>
+  </div>
 </div>
 </template>
 
 <script>
-import GtRadio from '../../../components/GtRadio'
+import GtRadio from '../../../components/GtRadio.vue'
+import GtLabel from '../../../components/GtLabel.vue'
 
 export default {
   name: 'RequestCard',
   components: {
-    GtRadio
+    GtRadio,
+    GtLabel
   },
   data: function () {
     return {
