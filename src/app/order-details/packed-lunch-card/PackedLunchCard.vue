@@ -5,35 +5,39 @@
       <b-icon icon="basket"></b-icon>
       Item {{index + 1}} - Marmita
     </label>
-    <!-- <b-button 
+    <b-button 
       class="card-remove-button" 
       variant="danger" 
       v-on:click="excludeCard(index)">
-      X
-      </b-button> -->
-    <b-button 
-      class="card-remove-button" 
-      variant="secondary" 
-      v-on:click="excludeCard(index)">
       <b-icon 
-        style="width: 24px; height: 24px;" 
+        style="width: 20px; height: 20px;" 
         shift-v="-1" 
         shift-h="-3" 
         icon="trash"></b-icon>
+    Remover marmita
     </b-button>
   </div>
   
   <label class="legend-label">Carne:</label>
-  <GtRadio :options="packedLunchOptions.meatOptions" v-on:optionselected="selectMeat($event, order)"
-    :default="packedLunchOptions.meatOptions[0]" :preselectedoption="order.meat"></GtRadio>
+  <gt-radio 
+    :options="packedLunchOptions.meatOptions" 
+    v-on:optionselected="selectMeat($event, order)"
+    :default="packedLunchOptions.meatOptions[0]" 
+    :preselectedoption="order.meat"/>
 
   <label class="legend-label">Tamanho:</label>
-  <GtRadio :options="packedLunchOptions.sizeOptions" v-on:optionselected="selectSize($event, order)" 
-    :default="packedLunchOptions.sizeOptions[0]" :preselectedoption="order.size"></GtRadio>
+  <gt-radio 
+    :options="packedLunchOptions.sizeOptions" 
+    v-on:optionselected="selectSize($event, order)" 
+    :default="packedLunchOptions.sizeOptions[0]" 
+    :preselectedoption="order.size"/>
 
   <label class="legend-label">Salada:</label>
-  <GtRadio :options="packedLunchOptions.saladOptions" v-on:optionselected="selectSalad($event, order)" 
-    :default="packedLunchOptions.saladOptions[0]" :preselectedoption="order.salad"></GtRadio>
+  <gt-radio 
+    :options="packedLunchOptions.saladOptions" 
+    v-on:optionselected="selectSalad($event, order)" 
+    :default="packedLunchOptions.saladOptions[0]" 
+    :preselectedoption="order.salad"/>
 </div>
 </template>
 
@@ -102,8 +106,6 @@ export default {
 .card-remove-button {
   margin-top: 8px;;
   font-size: 14px;
-  width: 40px;
-  height: 40px;
 }
 
 .legend-label {

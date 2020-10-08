@@ -5,21 +5,16 @@
       <b-icon icon="cup-straw" shift-v="2"></b-icon>
       Item {{index + 1}} - Refrigerante
     </label>
-    <!-- <b-button 
+    <b-button 
       class="card-remove-button" 
       variant="danger" 
       v-on:click="excludeCard(index)">
-      X
-      </b-button> -->
-    <b-button 
-      class="card-remove-button" 
-      variant="secondary" 
-      v-on:click="excludeCard(index)">
       <b-icon 
-        style="width: 24px; height: 24px;" 
+        style="width: 20px; height: 20px;" 
         shift-v="-1" 
         shift-h="-3" 
         icon="trash"></b-icon>
+        Remover refrigerante
     </b-button>
   </div>
   
@@ -100,8 +95,6 @@ export default {
 .card-remove-button {
   margin-top: 8px;;
   font-size: 14px;
-  width: 40px;
-  height: 40px;
 }
 
 .legend-label {

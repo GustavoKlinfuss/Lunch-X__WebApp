@@ -4,16 +4,16 @@
     <span>Dados para contato e entrega</span><br>
 
     <div class="card-content">
-      <GtInput label="Nome:" placeholder="Nome" v-model="userDetails.name"/>
-      <GtInput label="Rua:" v-model="userDetails.addressStreet"/>
+      <gt-input label="Nome:" placeholder="Nome" v-model="userDetails.name"/>
+      <gt-input label="Rua:" v-model="userDetails.addressStreet"/>
       <div class="row-div">
-        <GtInput style="width: 49%" label="Número:" v-model="userDetails.addressNumber"/>
-        <GtInput style="margin-left: 2%; width: 49%" label="Complemento:" v-model="userDetails.addressComplement"/>
+        <gt-input style="width: 49%" label="Número:" v-model="userDetails.addressNumber"/>
+        <gt-input style="margin-left: 2%; width: 49%" label="Complemento:" v-model="userDetails.addressComplement"/>
       </div>
-      <GtInput label="Telefone:" v-model="userDetails.phone"/>
+      <gt-input label="Telefone:" v-model="userDetails.phone"/>
     </div>
   </div>
-  <GtButton text="Fazer pedido" v-on:click="finishUserDetails()"/>
+  <gt-button text="Fazer pedido" v-on:click="finishUserDetails()"/>
 </div>
 </template>
 

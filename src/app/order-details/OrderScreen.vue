@@ -1,28 +1,28 @@
 <template>
 <div class="order-screen" :key="keyToReloadScreen">
 	<li v-for="(order, index) in orders" v-bind:key="order.id">
-		<PackedLunchCard 
+		<packed-lunch-card 
 			v-if="order.itemType === OrderItemTypeEnum.PackedLunch" 
 			:order="order" 
 			:index="index" 
 			v-on:card-excluded="removeCard($event)"/>
-		<RefrigerantCard 
+		<refrigerant-card 
 			v-if="order.itemType === OrderItemTypeEnum.Refrigerant" 
 			:order="order" 
 			:index="index" 
 			v-on:card-excluded="removeCard($event)"/>
 	</li>
 	<div class="row-div">
-		<GtButton 
+		<gt-button 
 			style="width: 49.5%" 
 			text="Adicionar Marmita" 
 			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
-		<GtButton 
+		<gt-button 
 			style="margin-left: 1%; width: 49.5%" 
 			text="Adicionar Refrigerante"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
-	<GtButton 
+	<gt-button 
 		text="Próxima etapa"
 		v-on:click="finishOrder()"/>
 </div>

@@ -1,8 +1,12 @@
 <template>
 <div class="gtRadioButtonGroup">
   <li v-for="option in options" v-bind:key="option.id">
-    <b-form-radio :class="selectRadioClass(option)" button-variant="warning"
-      v-model="selectedValue" :value="option" v-on:change="selectOption(option)">
+    <b-form-radio 
+      :class="selectRadioClass(option)"
+      button-variant="warning"
+      v-model="selectedValue"
+      :value="option"
+      v-on:change="selectOption(option)">
       {{option}}
     </b-form-radio>
   </li>
@@ -51,11 +55,12 @@ export default {
 }
 
 .gtRadioButtonGroup {
-    margin-left: 64px;
+    margin-left: 56px;
 }
 
 .gtRadioButton {
-    margin-top: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 /* .custom-control-input:checked ~ .custom-control-label::before {
