@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import GtRadio from '../../../components/GtRadio'
+import GtRadio from '../../../components/GtRadio.vue'
+import { RestaurantMenu } from '../../../variables/enums.js'
 
 export default {
   name: 'RequestCard',
@@ -52,10 +53,11 @@ export default {
   data: function () {
     return {
       packedLunchOptions: {
-        meatOptions: ['Frango', 'Bife'],
-        sizeOptions: ['Pequena', 'Grande'],
+        meatOptions: this.getMeatOptionsFromThisDay(),
+        sizeOptions: ['Grande', 'Pequena'],
         saladOptions: ['Com tempero', 'Sem tempero'],
-      }
+      },
+      RestaurantMenu
     }
   },
   props: {
@@ -63,6 +65,11 @@ export default {
     index: Number
   },
   methods: {
+    getMeatOptionsFromThisDay: function() {
+      const todayInDayOfWeek = (new Date(Date.now())).getDay();
+      const todayMenu = RestaurantMenu[todayInDayOfWeek];
+      return todayMenu;
+    },
     selectMeat (value, order) {
 			order.meat = value;
 		},
