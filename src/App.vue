@@ -65,22 +65,31 @@ export default {
         })
     },
     finishOrder: function () {
-      var orderListByItemType = {
-        PackedLunch: this.getPackedLunchs(),
-        Refrigerant: this.getRefrigerants()
-      }
+      // var orderListByItemType = {
+      //   PackedLunch: this.getPackedLunchs(),
+      //   Refrigerant: this.getRefrigerants()
+      // }
 
-      const packedLunchMessage = this.getMessageFromPackedLunch(orderListByItemType);
-      const saladMessage = this.getMessageFromSalad(orderListByItemType);
-      const refrigerantMessage = this.getMessageFromRefrigerant(orderListByItemType);
+      // const packedLunchMessage = this.getMessageFromPackedLunch(orderListByItemType);
+      // const saladMessage = this.getMessageFromSalad(orderListByItemType);
+      // const refrigerantMessage = !orderListByItemType.Refrigerant || this.getMessageFromRefrigerant(orderListByItemType);
 
-      const order = `${packedLunchMessage}\n${saladMessage}\n${refrigerantMessage}`;
+      // const orderMessage = `${packedLunchMessage}\n${saladMessage}\n${refrigerantMessage}`;
+      // const user = this.userDetails;
+      // const userDetailsMessage = `Nome: ${user.name}\nEndereço: ${user.addressStreet}, ${user.addressNumber}\n${user.addressComplement}\nTelefone: ${user.phone}`;
 
-      // alert('Seu pedido:\n\n' + pedido);
+      // const finalMessage = orderMessage + '\n' + userDetailsMessage;
 
-      axios.post('http://localhost:3000/', {order})
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
+      axios.post('http://192.168.25.188:3000/', {userDetails: this.userDetails, orderDetails: this.order})
+      .then((response) => {
+        if (response.data.Success) {
+          alert("Seu pedido foi realizado! \n\n Será entregue em cerca de 30 minutos.");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        alert('Ocorreu um erro. Por favor tente novamente!')
+      })
     },
 
     getMessageFromPackedLunch: function (orderListByItemType) {
