@@ -12,6 +12,7 @@
 import OrderScreen from './app/order-details/OrderScreen.vue'
 import UserInfoScreen from './app/user-details/UserInfoScreen.vue'
 import { OrderItemTypeEnum, StagesEnum } from './variables/enums.js'
+import axios from 'axios'
 
 export default {
   name: 'App',
@@ -73,7 +74,13 @@ export default {
       const saladMessage = this.getMessageFromSalad(orderListByItemType);
       const refrigerantMessage = this.getMessageFromRefrigerant(orderListByItemType);
 
-      alert(`Seu pedido:\n\n${packedLunchMessage}\n${saladMessage}\n${refrigerantMessage}`);
+      const order = `${packedLunchMessage}\n${saladMessage}\n${refrigerantMessage}`;
+
+      // alert('Seu pedido:\n\n' + pedido);
+
+      axios.post('http://localhost:3000/', {order})
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     },
 
     getMessageFromPackedLunch: function (orderListByItemType) {
