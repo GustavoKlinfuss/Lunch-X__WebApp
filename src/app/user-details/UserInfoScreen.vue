@@ -1,19 +1,22 @@
 <template>
 <div class="column-div">
-  <div class="card">
-    <label>Dados para contato e entrega</label><br>
-
-    <div class="card-content">
-      <gt-input label="Nome:" placeholder="Nome" v-model="userDetails.name"/>
-      <gt-input label="Rua:" v-model="userDetails.addressStreet"/>
-      <div class="row-div">
-        <gt-input style="width: 49%" label="Número:" v-model="userDetails.addressNumber"/>
-        <gt-input style="margin-left: 2%; width: 49%" label="Complemento:" v-model="userDetails.addressComplement"/>
+  <b-form v-on:submit="onSubmit">
+    <div class="column-div">
+      <div class="card">
+        <h5>Dados para contato e entrega</h5>
+        <div class="card-content">
+          <gt-input label="Nome:" required v-model="userDetails.name"/>
+          <gt-input label="Rua:" required  v-model="userDetails.addressStreet"/>
+          <div class="row-div">
+            <gt-input style="width: 49%" label="Número:" required v-model="userDetails.addressNumber"/>
+            <gt-input style="margin-left: 2%; width: 49%" label="Complemento:" placeholder="Opcional" v-model="userDetails.addressComplement"/>
+          </div>
+          <gt-input label="Telefone:" required v-model="userDetails.phone"/>
+        </div>
       </div>
-      <gt-input label="Telefone:" v-model="userDetails.phone"/>
+      <gt-button type="submit" text="Fazer pedido"/>
     </div>
-  </div>
-  <gt-button text="Fazer pedido" v-on:click="finishUserDetails()"/>
+  </b-form>
 </div>
 </template>
 
@@ -40,9 +43,12 @@ export default {
   methods: {
     finishUserDetails: function () {
       this.$emit('step-completed', this.userDetails);
+    },
+    onSubmit: function(event) {
+      event.preventDefault();
+      this.finishUserDetails();
     }
   }
-  
 }
 </script>
 

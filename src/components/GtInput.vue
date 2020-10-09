@@ -1,6 +1,6 @@
 <template>
   <b-form-group :label="label">
-    <b-form-input v-model="inputValue" :placeholder="placeholder" trim></b-form-input>
+    <b-form-input v-model="inputValue" :required="required" :placeholder="placeholder" trim></b-form-input>
   </b-form-group>
 </template>
 
@@ -9,7 +9,8 @@ export default {
   props: {
     label: String,
     placeholder: String,
-    value: String
+    value: String,
+    required: Boolean
   },
   computed: {
     inputValue: {
