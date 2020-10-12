@@ -1,18 +1,10 @@
 <template>
 <gt-card headerIcon="cup-straw" :index="index" headerText="Refrigerante" v-on:exclude-card="excludeCard()">
   <gt-label text="Opção:"/>
-  <GtRadio 
-    :options="refrigerantOptions.refrigerantTypeOptions" 
-    v-on:optionselected="item.refrigerantType = $event"
-    :default="refrigerantOptions.refrigerantTypeOptions[0]" 
-    :preselectedoption="item.refrigerantType"></GtRadio>
+  <gt-radio :options="refrigerantOptions.refrigerantTypeOptions" v-model="item.refrigerantType"/>
 
   <gt-label text="Tamanho:"/>
-  <GtRadio 
-    :options="refrigerantOptions.refrigerantSizeOptions"
-    v-on:optionselected="item.refrigerantSize = $event" 
-    :default="refrigerantOptions.refrigerantSizeOptions[0]"
-    :preselectedoption="item.refrigerantSize"></GtRadio>
+  <gt-radio :options="refrigerantOptions.refrigerantSizeOptions" v-model="item.refrigerantSize"/>
 </gt-card>
 </template>
 

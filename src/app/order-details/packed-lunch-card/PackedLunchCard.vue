@@ -1,25 +1,13 @@
 <template>
 <gt-card headerIcon="basket" :index="index" headerText="Marmita" v-on:exclude-card="excludeCard()">
   <gt-label text="Carne:"/>
-  <gt-radio 
-    :options="packedLunchOptions.meatOptions" 
-    v-on:optionselected="item.meat = $event"
-    :default="packedLunchOptions.meatOptions[0]" 
-    :preselectedoption="item.meat"/>
+  <gt-radio :options="packedLunchOptions.meatOptions" v-model="item.meat"/>
 
   <gt-label text="Tamanho:"/>
-  <gt-radio 
-    :options="packedLunchOptions.sizeOptions" 
-    v-on:optionselected="item.size = $event" 
-    :default="packedLunchOptions.sizeOptions[0]" 
-    :preselectedoption="item.size"/>
+  <gt-radio :options="packedLunchOptions.sizeOptions" v-model="item.size"/>
 
   <gt-label text="Salada:"/>
-  <gt-radio 
-    :options="packedLunchOptions.saladOptions" 
-    v-on:optionselected="item.salad = $event" 
-    :default="packedLunchOptions.saladOptions[0]" 
-    :preselectedoption="item.salad"/>
+  <gt-radio :options="packedLunchOptions.saladOptions" v-model="item.salad"/>
 </gt-card>
 </template>
 
