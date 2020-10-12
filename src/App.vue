@@ -1,6 +1,6 @@
 <template>
-<main class="text-muted">
-  <header class="header p-3 text-white text-center border-bottom border-light">{{header}}</header>
+<main>
+  <header class="header">{{header}}</header>
   <div class="container mt-2">
     <order-screen v-if="stage === StagesEnum.OrderScreen" v-on:step-completed="orderCompleted($event)"/>
     <user-info-screen v-if="stage === StagesEnum.UserInfoScreen" v-on:step-completed="userDetailsCompleted($event)"/>
@@ -82,6 +82,11 @@ html, main {
 
 .header {
 	background-color:  #00326b;
+  padding: 16px;
   font-size: 24px;
+  color: white;
+  margin-bottom: 8px;
+  border-bottom: 1px solid white;	
+  text-align: center;
 }
 </style>
