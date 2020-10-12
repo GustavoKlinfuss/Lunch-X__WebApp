@@ -4,6 +4,7 @@
   <div class="container">
     <order-screen v-if="stage === StagesEnum.OrderScreen" v-on:step-completed="orderCompleted($event)"/>
     <user-info-screen v-if="stage === StagesEnum.UserInfoScreen" v-on:step-completed="userDetailsCompleted($event)"/>
+    <finish-order-modal :showModal="showModal" :orderDetails="orderDetails" :userDetails="userDetails" v-on:modal-closed="closeModal()" v-on:order-finished="finishOrder()"/>
   </div>
 </main>
 </template>
@@ -11,6 +12,7 @@
 <script>
 import OrderScreen from './app/order-details/OrderScreen.vue'
 import UserInfoScreen from './app/user-details/UserInfoScreen.vue'
+import FinishOrderModal from './app/finish-order-modal/FinishOrderModal.vue'
 import { OrderItemTypeEnum, StagesEnum } from './variables/enums.js'
 import axios from 'axios'
 
@@ -22,65 +24,41 @@ export default {
       header: 'Tempeadori - Faça seu pedido',
       StagesEnum,
       OrderItemTypeEnum,
-      order: {type: Object},
-      userDetails: {type: Object}
+      orderDetails: [],
+      userDetails: {type: Object},
+      showModal: false
     }
   },
   components: {
     OrderScreen,
-    UserInfoScreen
+    UserInfoScreen,
+    FinishOrderModal
   },
   methods: {
+    closeModal: function () {
+      this.showModal = false;
+    },
+
     orderCompleted: function (order) {
-      this.order = order;
+      this.orderDetails = order;
       this.goToNextStep();
     },
+
     goToNextStep: function () {
       this.stage = StagesEnum.UserInfoScreen;
     },
+
     userDetailsCompleted: function (userDetails) {
       this.userDetails = userDetails;
-      this.finishOrder();
+      this.openModal();
     },
-    getPackedLunchs: function () {
-      return this.order
-        .filter(e => e.itemType === OrderItemTypeEnum.PackedLunch)
-        .map(e => {
-          return {
-              size: e.size,
-              meat: e.meat,
-              salad: e.salad
-            }
-        })
+
+    openModal: function () {
+      this.showModal = true;
     },
-    getRefrigerants: function () {
-      return this.order
-        .filter(e => e.itemType === OrderItemTypeEnum.Refrigerant)
-        .map(e => {
-          return {
-              type: e.itemType,
-              refrigerantSize: e.refrigerantSize,
-              refrigerantType: e.refrigerantType
-            }
-        })
-    },
+
     finishOrder: function () {
-      // var orderListByItemType = {
-      //   PackedLunch: this.getPackedLunchs(),
-      //   Refrigerant: this.getRefrigerants()
-      // }
-
-      // const packedLunchMessage = this.getMessageFromPackedLunch(orderListByItemType);
-      // const saladMessage = this.getMessageFromSalad(orderListByItemType);
-      // const refrigerantMessage = !orderListByItemType.Refrigerant || this.getMessageFromRefrigerant(orderListByItemType);
-
-      // const orderMessage = `${packedLunchMessage}\n${saladMessage}\n${refrigerantMessage}`;
-      // const user = this.userDetails;
-      // const userDetailsMessage = `Nome: ${user.name}\nEndereço: ${user.addressStreet}, ${user.addressNumber}\n${user.addressComplement}\nTelefone: ${user.phone}`;
-
-      // const finalMessage = orderMessage + '\n' + userDetailsMessage;
-
-      axios.post('http://192.168.25.188:3000/', {userDetails: this.userDetails, orderDetails: this.order})
+      axios.post('http://192.168.25.188:3000/', {userDetails: this.userDetails, orderDetails: this.orderDetails})
       .then((response) => {
         if (response.data.Success) {
           alert("Seu pedido foi realizado! \n\n Será entregue em cerca de 30 minutos.");
@@ -90,60 +68,6 @@ export default {
         console.log(error);
         alert('Ocorreu um erro. Por favor tente novamente!')
       })
-    },
-
-    getMessageFromPackedLunch: function (orderListByItemType) {
-      var message = '';
-      var listened = [];
-
-      orderListByItemType.PackedLunch.forEach(pL => {
-        var packedLunchInList = listened.find(e => e.meat === pL.meat && e.size === pL.size);
-        packedLunchInList 
-          ? packedLunchInList.count += 1
-          : listened.push({meat: pL.meat, size: pL.size, count: 1});
-      })
-
-      listened.forEach(e => {
-        message += `${e.count} ${e.size} ${e.meat}\n`;
-      })
-
-      return message;
-    },
-
-    getMessageFromSalad: function (orderListByItemType) {
-      var message = '';
-      var listened = [];
-
-      orderListByItemType.PackedLunch.forEach(pL => {
-        var packedLunchInList = listened.find(e => e.salad === pL.salad);
-        packedLunchInList 
-          ? packedLunchInList.count += 1
-          : listened.push({salad: pL.salad, count: 1});
-      })
-
-      listened.forEach(e => {
-        message += `${e.count} Saladas ${e.salad.toLowerCase()}\n`;
-      })
-
-      return message;
-    },
-
-    getMessageFromRefrigerant: function (orderListByItemType) {
-      var message = '';
-      var listened = [];
-
-      orderListByItemType.Refrigerant.forEach(refrigerant => {
-        var refrigerantInList = listened.find(e => e.refrigerantType === refrigerant.refrigerantType && e.refrigerantSize === refrigerant.refrigerantSize);
-        refrigerantInList 
-          ? refrigerantInList.count += 1
-          : listened.push({refrigerantType: refrigerant.refrigerantType, refrigerantSize: refrigerant.refrigerantSize, count: 1});
-      })
-
-      listened.forEach(e => {
-        message += `${e.count} ${e.refrigerantType} ${e.refrigerantSize}\n`;
-      })
-
-      return message;
     }
   }
 }
