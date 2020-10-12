@@ -14,28 +14,27 @@
 
 <script>
 export default {
-  data: function () {
-    return {
-        selectedValue: "",
-    }
-  },
   created: function () {
-    if (this.preselectedoption) {
-        this.selectOption(this.preselectedoption)
-    } else if (this.default) {
-        this.selectOption(this.default);
+    if (!this.value) {
+      this.selectedValue = this.options[0];
     }
   },
   props: {
     options: Array,
     default: String,
-    preselectedoption: String
+    value: String
+  },
+  computed: {
+    selectedValue: {
+      get: function () {
+        return this.value;
+      },
+      set: function (val) {
+        this.$emit('input', val);
+      }
+    }
   },
   methods: {
-    selectOption: function (event) {
-      this.selectedValue = event;
-      this.$emit('optionselected', event);
-    },
     selectRadioClass : function (option) {
       const radioClass = option === this.selectedValue
         ? 'font-weight-bold my-1'
