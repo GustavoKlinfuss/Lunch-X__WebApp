@@ -1,9 +1,8 @@
 <template>
-<div class="gtRadioButtonGroup">
+<div class="ml-4">
   <li v-for="option in options" v-bind:key="option.id">
     <b-form-radio 
       :class="selectRadioClass(option)"
-      button-variant="warning"
       v-model="selectedValue"
       :value="option"
       v-on:change="selectOption(option)">
@@ -15,7 +14,6 @@
 
 <script>
 export default {
-  name: 'GtRadio',
   data: function () {
     return {
         selectedValue: "",
@@ -40,8 +38,8 @@ export default {
     },
     selectRadioClass : function (option) {
       const radioClass = option === this.selectedValue
-        ? 'radio-selected gtRadioButton'
-        : 'gtRadioButton';
+        ? 'font-weight-bold my-1'
+        : 'my-1';
 
       return radioClass;
     }
@@ -50,22 +48,12 @@ export default {
 </script>
 
 <style>
-.radio-selected {
-  font-weight: bolder !important;
-}
-
-.gtRadioButtonGroup {
-  margin-left: 16px;
-}
-
-.gtRadioButton {
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
 /* .custom-control-input:checked ~ .custom-control-label::before {
   background-color:black !important;
   border-color:black !important;
 } */
 
+li {
+  list-style-type: none;
+}
 </style>

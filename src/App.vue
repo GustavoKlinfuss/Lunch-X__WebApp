@@ -1,7 +1,7 @@
 <template>
 <main>
   <header class="header">{{header}}</header>
-  <div class="container">
+  <div class="container mt-2">
     <order-screen v-if="stage === StagesEnum.OrderScreen" v-on:step-completed="orderCompleted($event)"/>
     <user-info-screen v-if="stage === StagesEnum.UserInfoScreen" v-on:step-completed="userDetailsCompleted($event)"/>
     <finish-order-modal :showModal="showModal" :orderDetails="orderDetails" :userDetails="userDetails" v-on:modal-closed="closeModal()" v-on:order-finished="finishOrder()"/>
@@ -77,31 +77,16 @@ export default {
 html, main {
   background-color: rgb(223, 223, 223);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color:rgb(109, 109, 109);
   font-size: 16px;
 }
 
 .header {
-	background-color:  rgb(0, 50, 107);
-  padding: 16px 16px;
+	background-color:  #00326b;
+  padding: 16px;
   font-size: 24px;
   color: white;
   margin-bottom: 8px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid white;	
   text-align: center;
-}
-
-.row-div {
-  display:flex;
-  flex-direction: row;
-}
-
-.column-div {
-  display:flex;
-  flex-direction: column;
-}
-
-li {
-  list-style-type: none;
 }
 </style>

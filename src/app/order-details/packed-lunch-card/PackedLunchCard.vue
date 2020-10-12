@@ -1,53 +1,40 @@
 <template>
-<div class="card">
-  <div class="card-head">
-    <h5 class="card-title">
-      <b-icon icon="basket"></b-icon>
-      Item {{index + 1}} - Marmita
-    </h5>
-    <b-button 
-      class="card-remove-button" 
-      variant="danger" 
-      v-on:click="excludeCard(index)">
-      <b-icon icon="trash"></b-icon>
-      <span>Remover</span>
-    </b-button>
-  </div>
-  <div class="card-content">
-    <gt-label text="Carne:"/>
-    <gt-radio 
-      :options="packedLunchOptions.meatOptions" 
-      v-on:optionselected="selectMeat($event, order)"
-      :default="packedLunchOptions.meatOptions[0]" 
-      :preselectedoption="order.meat"/>
+<gt-card headerIcon="basket" :index="index" headerText="Marmita" v-on:exclude-card="excludeCard()">
+  <gt-label text="Carne:"/>
+  <gt-radio 
+    :options="packedLunchOptions.meatOptions" 
+    v-on:optionselected="item.meat = $event"
+    :default="packedLunchOptions.meatOptions[0]" 
+    :preselectedoption="item.meat"/>
 
-    <gt-label text="Tamanho:"/>
-    <gt-radio 
-      :options="packedLunchOptions.sizeOptions" 
-      v-on:optionselected="selectSize($event, order)" 
-      :default="packedLunchOptions.sizeOptions[0]" 
-      :preselectedoption="order.size"/>
+  <gt-label text="Tamanho:"/>
+  <gt-radio 
+    :options="packedLunchOptions.sizeOptions" 
+    v-on:optionselected="item.size = $event" 
+    :default="packedLunchOptions.sizeOptions[0]" 
+    :preselectedoption="item.size"/>
 
-    <gt-label text="Salada:"/>
-    <gt-radio 
-      :options="packedLunchOptions.saladOptions" 
-      v-on:optionselected="selectSalad($event, order)" 
-      :default="packedLunchOptions.saladOptions[0]" 
-      :preselectedoption="order.salad"/>
-  </div>
-</div>
+  <gt-label text="Salada:"/>
+  <gt-radio 
+    :options="packedLunchOptions.saladOptions" 
+    v-on:optionselected="item.salad = $event" 
+    :default="packedLunchOptions.saladOptions[0]" 
+    :preselectedoption="item.salad"/>
+</gt-card>
 </template>
 
 <script>
 import GtRadio from '../../../components/GtRadio.vue'
 import GtLabel from '../../../components/GtLabel.vue'
 import { RestaurantMenu } from '../../../variables/enums.js'
+import GtCard from '../../../components/GtCard.vue'
 
 export default {
   name: 'RequestCard',
   components: {
     GtRadio,
-    GtLabel
+    GtLabel,
+    GtCard
   },
   data: function () {
     return {
@@ -60,28 +47,18 @@ export default {
     }
   },
   props: {
-    order: Object,
+    item: Object,
     index: Number
   },
   methods: {
     getMeatOptionsFromThisDay: function() {
-      const todayInDayOfWeek = (new Date(Date.now())).getDay();
-      const todayMenu = RestaurantMenu[todayInDayOfWeek];
+      const thisDayOfWeek = (new Date(Date.now())).getDay();
+      const todayMenu = RestaurantMenu[thisDayOfWeek];
       return todayMenu;
     },
-    selectMeat (value, order) {
-			order.meat = value;
-		},
-
-		selectSize (value, order) {
-			order.size = value;
-		},
-
-		selectSalad (value, order) {
-			order.salad = value;
-    },
+    
     excludeCard: function () {
-      this.$emit('card-excluded', this.index)
+      this.$emit('exclude-card', this.index)
 		}
   }
 }
