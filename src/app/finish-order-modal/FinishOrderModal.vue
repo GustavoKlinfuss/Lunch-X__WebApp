@@ -12,7 +12,7 @@
       <span v-if="item.itemType === OrderItemTypeEnum.Refrigerant">{{item.refrigerantType}} {{item.refrigerantSize}}<br></span>
     </li>
 
-    <div style="border-top: 1px solid #dee2e6; margin-top: 20px; margin-bottom: 10px;"></div>
+    <div class="border-top border-gray mt-3 mb-2"></div>
 
     <h5>Informações pessoais:</h5>
     <span><strong>Nome:</strong> {{userDetails.name}}</span><br>
@@ -20,16 +20,16 @@
     <span><strong>Telefone: </strong>{{userDetails.phone}}</span><br>
   </div>
   <template v-slot:modal-footer>
-    <div style="width: 100%; display: flex; justify-content: space-between;">
+    <div class="d-flex">
       <b-button
-        style="width: 49%"
+        class="w-50 mr-1"
         variant="outline-warning"
         v-on:click="closeModal()"
       >
         Voltar
       </b-button>
       <b-button
-        style="width: 49%"
+        class="w-50 ml-1"
         variant="outline-success"
         v-on:click="finishOrder()"
       >
@@ -37,8 +37,6 @@
       </b-button>
     </div>
   </template>
-  <!-- <b-button class="mt-2" variant="outline-success" block @click="consolalogai(1)">Confirmar e fazer pedido</b-button> -->
-  <!-- <b-button class="mt-2" variant="outline-warning" block @click="consolalogai(2)">Voltar</b-button> -->
 </b-modal>
 </template>
 
