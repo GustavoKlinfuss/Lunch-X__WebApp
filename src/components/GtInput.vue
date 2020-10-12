@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.form-control::-webkit-input-placeholder {
+/* .form-control::-webkit-input-placeholder {
   color: #ccc;
-}
+} */
 </style>

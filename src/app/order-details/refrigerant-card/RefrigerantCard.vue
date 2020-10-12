@@ -1,45 +1,32 @@
 <template>
-<div class="card">
-  <div class="card-head">
-    <h5 class="card-title">
-      <b-icon icon="cup-straw" shift-v="2"></b-icon>
-      Item {{index + 1}} - Refrigerante
-    </h5>
-    <b-button 
-      class="card-remove-button" 
-      variant="danger" 
-      v-on:click="excludeCard(index)">
-      <b-icon icon="trash"></b-icon>
-      <span>Remover</span>
-    </b-button>
-  </div>
-  <div class="card-content">
-    <gt-label text="Opção:"/>
-    <GtRadio 
-      :options="refrigerantOptions.refrigerantTypeOptions" 
-      v-on:optionselected="selectRefrigerantType($event, order)"
-      :default="refrigerantOptions.refrigerantTypeOptions[0]" 
-      :preselectedoption="order.refrigerantType"></GtRadio>
+<gt-card headerIcon="cup-straw" :index="index" headerText="Refrigerante" v-on:exclude-card="excludeCard()">
+  <gt-label text="Opção:"/>
+  <GtRadio 
+    :options="refrigerantOptions.refrigerantTypeOptions" 
+    v-on:optionselected="item.refrigerantType = $event"
+    :default="refrigerantOptions.refrigerantTypeOptions[0]" 
+    :preselectedoption="item.refrigerantType"></GtRadio>
 
-    <gt-label text="Tamanho:"/>
-    <GtRadio 
-      :options="refrigerantOptions.refrigerantSizeOptions"
-      v-on:optionselected="selectRefrigerantSize($event, order)" 
-      :default="refrigerantOptions.refrigerantSizeOptions[0]"
-      :preselectedoption="order.refrigerantSize"></GtRadio>
-  </div>
-</div>
+  <gt-label text="Tamanho:"/>
+  <GtRadio 
+    :options="refrigerantOptions.refrigerantSizeOptions"
+    v-on:optionselected="item.refrigerantSize = $event" 
+    :default="refrigerantOptions.refrigerantSizeOptions[0]"
+    :preselectedoption="item.refrigerantSize"></GtRadio>
+</gt-card>
 </template>
 
 <script>
 import GtRadio from '../../../components/GtRadio.vue'
 import GtLabel from '../../../components/GtLabel.vue'
+import GtCard from '../../../components/GtCard.vue'
 
 export default {
   name: 'RequestCard',
   components: {
     GtRadio,
-    GtLabel
+    GtLabel,
+    GtCard
   },
   data: function () {
     return {
@@ -50,20 +37,12 @@ export default {
     }
   },
   props: {
-    order: Object,
+    item: Object,
     index: Number
   },
   methods: {
-    selectRefrigerantType (value, order) {
-			order.refrigerantType = value;
-		},
-
-		selectRefrigerantSize (value, order) {
-			order.refrigerantSize = value;
-		},
-
     excludeCard: function () {
-      this.$emit('card-excluded', this.index)
+      this.$emit('exclude-card', this.index)
 		}
   }
 }

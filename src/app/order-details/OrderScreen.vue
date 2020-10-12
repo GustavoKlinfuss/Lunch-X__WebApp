@@ -1,26 +1,24 @@
 <template>
-<div class="column-div" :key="keyToReloadScreen">
-	<li v-for="(order, index) in orders" v-bind:key="order.id">
+<div class="d-flex flex-column" :key="keyToReloadScreen">
+	<li v-for="(item, index) in order" v-bind:key="item.id">
 		<packed-lunch-card 
-			class="order-card"
-			v-if="order.itemType === OrderItemTypeEnum.PackedLunch" 
-			:order="order" 
+			v-if="item.itemType === OrderItemTypeEnum.PackedLunch" 
+			:item="item" 
 			:index="index" 
-			v-on:card-excluded="removeCard($event)"/>
+			v-on:exclude-card="removeCard($event)"/>
 		<refrigerant-card 
-			class="order-card"
-			v-if="order.itemType === OrderItemTypeEnum.Refrigerant" 
-			:order="order" 
+			v-if="item.itemType === OrderItemTypeEnum.Refrigerant" 
+			:item="item" 
 			:index="index" 
-			v-on:card-excluded="removeCard($event)"/>
+			v-on:exclude-card="removeCard($event)"/>
 	</li>
-	<div class="row-div">
+	<div class="d-flex">
 		<gt-button 
-			style="width: 49%" 
+			class="w-50 mr-1"
 			text="Adicionar Marmita" 
 			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
 		<gt-button 
-			style="margin-left: 2%; width: 49%" 
+			class="w-50 ml-1"
 			text="Adicionar Refrigerante"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
@@ -37,7 +35,6 @@ import GtButton from '../../components/GtButton.vue'
 import { OrderItemTypeEnum } from '../../variables/enums.js'
 
 export default {
-	name: 'OrderScreen',
 	components: {
 		PackedLunchCard,
 		RefrigerantCard,
@@ -45,24 +42,24 @@ export default {
 	},
 	data: function () { 
 		return {
-			orders: [	],
+			order: [	],
 			keyToReloadScreen: 0,
 			OrderItemTypeEnum
 		}
 	},
 	created: function () {
-		if(!this.orders.length) {
+		if(!this.order.length) {
 			this.addItemToOrder(OrderItemTypeEnum.PackedLunch);
 		}
 	},
 	methods: {
 		finishOrder: function () {
-			this.$emit('step-completed', this.orders);
+			this.$emit('step-completed', this.order);
 		},
 
 		addItemToOrder: function (itemType) {
 			const newItem = this.getNewItemByItemType(itemType);
-			this.orders.push(newItem);
+			this.order.push(newItem);
 		},
 
 		getNewItemByItemType: function (itemType) {
@@ -90,38 +87,9 @@ export default {
 		},
 		
 		removeCard: function (index) {
-			this.orders.splice(index, 1);
+			this.order.splice(index, 1);
 			this.keyToReloadScreen += 1;
 		}
   }
 };
 </script>
-
-<style scoped>
-.order-card {
-  background-color: rgb(235, 235, 235);
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-}
-
-.order-card >>> .card-head {
-  margin-left: 8px;
-  margin-right: 8px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.order-card >>> .card-title {
-  margin-top: 12px;
-  margin-left: 4px;
-}
-
-.order-card >>> .card-remove-button {
-  margin-top: 8px;
-}
-
-.order-card >>> .card-content {
-	margin-left: 32px;
-}
-</style>
