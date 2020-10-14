@@ -4,8 +4,7 @@
     <b-form-radio 
       :class="selectRadioClass(option)"
       v-model="selectedValue"
-      :value="option"
-      v-on:change="selectOption(option)">
+      :value="option">
       {{option}}
     </b-form-radio>
   </li>
