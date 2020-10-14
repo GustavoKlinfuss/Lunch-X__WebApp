@@ -8,7 +8,7 @@
     <li v-for="(item, index) in orderDetails" v-bind:key="item.id">
 
       <span><strong>{{index + 1}}. </strong></span>
-      <span v-if="item.itemType === OrderItemTypeEnum.PackedLunch">Marmita {{item.size}} de {{item.meat}} e salada {{(item.salad).toLowerCase()}}<br></span>
+      <span v-if="item.itemType === OrderItemTypeEnum.PackedLunch">Marmita {{item.size}} de {{item.meat}} e Salada {{(item.salad).toLowerCase()}}<br></span>
       <span v-if="item.itemType === OrderItemTypeEnum.Refrigerant">{{item.refrigerantType}} {{item.refrigerantSize}}<br></span>
     </li>
 
