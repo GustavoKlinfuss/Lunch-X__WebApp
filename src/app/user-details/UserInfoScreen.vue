@@ -11,8 +11,10 @@
       </div>
       <gt-input label="Telefone:" required v-model="userDetails.phone"/>
     </div>
-    <gt-button text="Voltar" v-on:click="toPreviousScreen()"/>
-    <gt-button type="submit" text="Próxima etapa"/>
+    <div class="d-flex">
+      <gt-button style="width: 60px;" icon="arrow-left" v-on:click="toPreviousScreen()"/>
+      <gt-button class="w-100 ml-1" type="submit" text="Próxima etapa"/>
+    </div>
   </div>
 </b-form>
 </template>

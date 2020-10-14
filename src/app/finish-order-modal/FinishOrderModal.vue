@@ -1,8 +1,8 @@
 <template>
-<b-modal v-model="showModal" title="">
+<b-modal id="finish-order-modal">
   <template v-slot:modal-header>
-      <h5>Confira as informações abaixo:</h5>
-    </template>
+    <h5>Confira as informações abaixo:</h5>
+  </template>
   <div class="d-block text-center">
     <h5>Informações do pedido:</h5>
     <li v-for="(item, index) in orderDetails" v-bind:key="item.id">
@@ -22,14 +22,14 @@
   <template v-slot:modal-footer>
     <div class="d-flex w-100">
       <b-button
-        class="w-50 mr-1"
+        style="width: 60px;"
         variant="outline-warning"
         v-on:click="closeModal()"
       >
-        Voltar
+        <b-icon icon="arrow-left"></b-icon>
       </b-button>
       <b-button
-        class="w-50 ml-1"
+        class="w-100 ml-2"
         variant="outline-success"
         v-on:click="finishOrder()"
       >
@@ -50,7 +50,6 @@ export default {
   },
   
   props: {
-    showModal: Boolean,
     orderDetails: Array,
     userDetails: Object
   },

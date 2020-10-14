@@ -1,6 +1,6 @@
 <template>
 <main>
-  <header class="header">{{header}}</header>
+  <header class="header sticky-top">{{header}}</header>
   <div class="container mt-2">
     <order-screen 
       v-if="stage === StagesEnum.OrderScreen" 
@@ -12,7 +12,6 @@
       v-on:to-previous-screen="toPreviousScreen()"
       :userDetails="userDetails"/>
     <finish-order-modal 
-      :showModal="showModal" 
       :orderDetails="orderDetails" 
       :userDetails="userDetails" 
       v-on:modal-closed="closeModal()" 
@@ -36,8 +35,7 @@ export default {
       StagesEnum,
       OrderItemTypeEnum,
       orderDetails: [],
-      userDetails: {type: Object},
-      showModal: false
+      userDetails: {type: Object}
     }
   },
   components: {
@@ -46,10 +44,6 @@ export default {
     FinishOrderModal
   },
   methods: {
-    closeModal: function () {
-      this.showModal = false;
-    },
-
     toPreviousScreen: function () {
       this.stage -= 1;
     },
@@ -59,7 +53,11 @@ export default {
     },
 
     openModal: function () {
-      this.showModal = true;
+      this.$bvModal.show('finish-order-modal');
+    },
+
+    closeModal: function () {
+      this.$bvModal.hide('finish-order-modal');
     },
 
     finishOrder: function () {
