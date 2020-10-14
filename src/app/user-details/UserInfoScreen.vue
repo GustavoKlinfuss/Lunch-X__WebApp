@@ -9,7 +9,7 @@
         <gt-input class="w-50 mr-1" label="Número:" required v-model="userDetails.addressNumber"/>
         <gt-input class="w-50 ml-1" label="Complemento:" v-model="userDetails.addressComplement"/>
       </div>
-      <gt-input label="Telefone:" required v-model="userDetails.phone"/>
+      <gt-input type="phone" label="Telefone:" required v-model="userDetails.phone"/>
     </div>
     <div class="d-flex">
       <gt-button style="width: 60px;" icon="arrow-left" v-on:click="toPreviousScreen()"/>
