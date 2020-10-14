@@ -2,9 +2,21 @@
 <main>
   <header class="header">{{header}}</header>
   <div class="container mt-2">
-    <order-screen v-if="stage === StagesEnum.OrderScreen" v-on:step-completed="orderCompleted($event)"/>
-    <user-info-screen v-if="stage === StagesEnum.UserInfoScreen" v-on:step-completed="userDetailsCompleted($event)"/>
-    <finish-order-modal :showModal="showModal" :orderDetails="orderDetails" :userDetails="userDetails" v-on:modal-closed="closeModal()" v-on:order-finished="finishOrder()"/>
+    <order-screen 
+      v-if="stage === StagesEnum.OrderScreen" 
+      v-on:step-completed="toNextScreen()"
+      :orderDetails="orderDetails"/>
+    <user-info-screen 
+      v-if="stage === StagesEnum.UserInfoScreen" 
+      v-on:step-completed="openModal()"
+      v-on:to-previous-screen="toPreviousScreen()"
+      :userDetails="userDetails"/>
+    <finish-order-modal 
+      :showModal="showModal" 
+      :orderDetails="orderDetails" 
+      :userDetails="userDetails" 
+      v-on:modal-closed="closeModal()" 
+      v-on:order-finished="finishOrder()"/>
   </div>
 </main>
 </template>
@@ -17,7 +29,6 @@ import { OrderItemTypeEnum, StagesEnum } from './variables/enums.js'
 import axios from 'axios'
 
 export default {
-  name: 'App',
   data: function () {
     return {
       stage: StagesEnum.OrderScreen,
@@ -39,18 +50,12 @@ export default {
       this.showModal = false;
     },
 
-    orderCompleted: function (order) {
-      this.orderDetails = order;
-      this.goToNextStep();
+    toPreviousScreen: function () {
+      this.stage -= 1;
     },
 
-    goToNextStep: function () {
-      this.stage = StagesEnum.UserInfoScreen;
-    },
-
-    userDetailsCompleted: function (userDetails) {
-      this.userDetails = userDetails;
-      this.openModal();
+    toNextScreen: function () {
+      this.stage += 1;
     },
 
     openModal: function () {

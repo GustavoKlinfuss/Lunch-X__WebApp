@@ -1,6 +1,6 @@
 <template>
 <div class="d-flex flex-column" :key="keyToReloadScreen">
-	<li v-for="(item, index) in order" v-bind:key="item.id">
+	<li v-for="(item, index) in orderDetails" v-bind:key="item.id">
 		<packed-lunch-card 
 			v-if="item.itemType === OrderItemTypeEnum.PackedLunch" 
 			:item="item" 
@@ -22,9 +22,7 @@
 			text="Adicionar Refrigerante"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
-	<gt-button 
-		text="Próxima etapa"
-		v-on:click="finishOrder()"/>
+	<gt-button text="Próxima etapa" v-on:click="finishOrder()"/>
 </div>
 </template>
 
@@ -42,24 +40,26 @@ export default {
 	},
 	data: function () { 
 		return {
-			order: [	],
 			keyToReloadScreen: 0,
 			OrderItemTypeEnum
 		}
 	},
+	props: {
+		orderDetails: {type: Array}
+	},
 	created: function () {
-		if(!this.order.length) {
+		if(!this.orderDetails.length) {
 			this.addItemToOrder(OrderItemTypeEnum.PackedLunch);
 		}
 	},
 	methods: {
 		finishOrder: function () {
-			this.$emit('step-completed', this.order);
+			this.$emit('step-completed', this.orderDetails);
 		},
 
 		addItemToOrder: function (itemType) {
 			const newItem = this.getNewItemByItemType(itemType);
-			this.order.push(newItem);
+			this.orderDetails.push(newItem);
 		},
 
 		getNewItemByItemType: function (itemType) {
@@ -87,7 +87,7 @@ export default {
 		},
 		
 		removeCard: function (index) {
-			this.order.splice(index, 1);
+			this.orderDetails.splice(index, 1);
 			this.keyToReloadScreen += 1;
 		}
   }

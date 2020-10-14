@@ -1,7 +1,7 @@
 <template>
 <b-form v-on:submit="onSubmit">
   <div class="d-flex flex-column">
-    <div class="card px-3 pt-2">
+    <div class="card px-3 pt-2 mb-2">
       <h5>Dados para contato e entrega</h5>
       <gt-input label="Nome:" required v-model="userDetails.name"/>
       <gt-input label="Rua:" required  v-model="userDetails.addressStreet"/>
@@ -11,7 +11,8 @@
       </div>
       <gt-input label="Telefone:" required v-model="userDetails.phone"/>
     </div>
-    <gt-button type="submit" text="Fazer pedido"/>
+    <gt-button text="Voltar" v-on:click="toPreviousScreen()"/>
+    <gt-button type="submit" text="Próxima etapa"/>
   </div>
 </b-form>
 </template>
@@ -25,24 +26,27 @@ export default {
     GtButton,
     GtInput
   },
-  data: function () {
-    return {
-      userDetails: {
-        name: '',
-        addressStreet: '',
-        addressNumber: '',
-        addressComplement: '',
-        phone: ''
-      }
+  props: {
+    userDetails: {
+      name: String,
+      addressStreet: String,
+      addressNumber: String,
+      addressComplement: String,
+      phone: String
     }
   },
   methods: {
     finishUserDetails: function () {
       this.$emit('step-completed', this.userDetails);
     },
+
     onSubmit: function(event) {
       event.preventDefault();
       this.finishUserDetails();
+    },
+
+    toPreviousScreen: function() {
+      this.$emit('to-previous-screen');
     }
   }
 }

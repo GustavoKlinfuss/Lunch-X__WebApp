@@ -20,7 +20,7 @@
     <span><strong>Telefone: </strong>{{userDetails.phone}}</span><br>
   </div>
   <template v-slot:modal-footer>
-    <div class="d-flex">
+    <div class="d-flex w-100">
       <b-button
         class="w-50 mr-1"
         variant="outline-warning"
