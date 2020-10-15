@@ -1,7 +1,7 @@
 <template>
 <div class="card pb-2 mb-2">
-  <div class="mx-2 d-flex justify-content-between">
-    <h5 class="mt-3 ml-1">
+  <div class="p-1 d-flex justify-content-between">
+    <h5 class="my-2 ml-1">
       <b-icon :icon="headerIcon" shift-v="2"></b-icon>
       Item {{index + 1}} - {{ headerText }}
     </h5>

@@ -12,7 +12,7 @@
       <gt-input type="phone" label="Telefone:" required v-model="userDetails.phone"/>
     </div>
     <div class="d-flex">
-      <gt-button style="width: 60px;" icon="arrow-left" v-on:click="toPreviousScreen()"/>
+      <gt-button class="back-button" icon="arrow-left" v-on:click="toPreviousScreen()"/>
       <gt-button class="w-100 ml-1" type="submit" text="Próxima etapa"/>
     </div>
   </div>

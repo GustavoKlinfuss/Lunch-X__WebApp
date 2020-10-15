@@ -1,11 +1,13 @@
 <template>
 <b-button 
-  class="mt-2" 
+  class="align-self-center"
   variant="danger" 
   v-on:click="click()"
   >
-  <b-icon icon="trash"></b-icon>
-  <span>Remover</span>
+  <div class="d-flex aligh-items-center">
+    <!-- <b-icon icon="trash" shift-v="-2" shift-h="-3"></b-icon> -->
+    <span>Remover</span>
+  </div>
 </b-button>
 </template>
 
@@ -18,3 +20,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* .remove-button { */
+  /* height: 40px; */
+/* } */
+</style>

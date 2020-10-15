@@ -22,7 +22,7 @@
   <template v-slot:modal-footer>
     <div class="d-flex w-100">
       <b-button
-        style="width: 60px;"
+        class="back-button"
         variant="outline-warning"
         v-on:click="closeModal()"
       >
