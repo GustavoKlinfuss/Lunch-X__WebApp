@@ -1,6 +1,7 @@
 <template>
   <b-form-group :label="label">
     <b-form-input v-if="type === 'phone'" type="tel" v-model="inputValue" :required="required" v-mask="['(##) ####-####', '(##) #####-####']" :placeholder="placeholder" trim></b-form-input>
+    <b-form-input v-else-if="type" :type="type" v-model="inputValue" :required="required" :placeholder="placeholder" trim></b-form-input>
     <b-form-input v-else v-model="inputValue" :required="required" :placeholder="placeholder" trim></b-form-input>
   </b-form-group>
 </template>

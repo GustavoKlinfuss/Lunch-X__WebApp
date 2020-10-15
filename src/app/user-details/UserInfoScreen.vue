@@ -6,7 +6,7 @@
       <gt-input label="Nome:" required v-model="userDetails.name"/>
       <gt-input label="Rua:" required  v-model="userDetails.addressStreet"/>
       <div class="d-flex">
-        <gt-input class="w-50 mr-1" label="Número:" required v-model="userDetails.addressNumber"/>
+        <gt-input type="number" class="w-50 mr-1" label="Número:" required v-model="userDetails.addressNumber"/>
         <gt-input class="w-50 ml-1" label="Complemento:" v-model="userDetails.addressComplement"/>
       </div>
       <gt-input type="phone" label="Telefone:" required v-model="userDetails.phone"/>
