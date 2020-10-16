@@ -1,12 +1,12 @@
 <template>
 <gt-card headerIcon="basket" :index="index" headerText="Marmita" v-on:exclude-card="excludeCard()">
-  <gt-label text="Carne:"/>
+  <gt-label>Carne:</gt-label>
   <gt-radio :options="packedLunchOptions.meatOptions" v-model="item.meat"/>
 
-  <gt-label text="Tamanho:"/>
+  <gt-label>Tamanho:</gt-label>
   <gt-radio :options="packedLunchOptions.sizeOptions" v-model="item.size"/>
 
-  <gt-label text="Salada:"/>
+  <gt-label>Salada:</gt-label>
   <gt-radio :options="packedLunchOptions.saladOptions" v-model="item.salad"/>
 </gt-card>
 </template>

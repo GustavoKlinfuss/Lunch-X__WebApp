@@ -1,7 +1,7 @@
 <template>
 <label>
   <span>
-    {{text}}
+    <slot></slot>
   </span>
 </label>
 </template>
@@ -9,9 +9,6 @@
 <script>
 
 export default {
-  props: {
-    text: String
-  },
 }
 </script>
 

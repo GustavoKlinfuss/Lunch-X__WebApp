@@ -93,3 +93,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+li {
+  list-style-type: none;
+}
+</style>

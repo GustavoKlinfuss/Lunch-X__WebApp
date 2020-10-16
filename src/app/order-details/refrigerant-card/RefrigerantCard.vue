@@ -1,9 +1,9 @@
 <template>
 <gt-card headerIcon="cup-straw" :index="index" headerText="Refrigerante" v-on:exclude-card="excludeCard()">
-  <gt-label text="Opção:"/>
+  <gt-label>Opção:</gt-label>
   <gt-radio :options="refrigerantOptions.refrigerantTypeOptions" v-model="item.refrigerantType"/>
 
-  <gt-label text="Tamanho:"/>
+  <gt-label>Tamanho:</gt-label>
   <gt-radio :options="refrigerantOptions.refrigerantSizeOptions" v-model="item.refrigerantSize"/>
 </gt-card>
 </template>

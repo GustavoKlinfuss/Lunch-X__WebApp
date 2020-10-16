@@ -5,12 +5,12 @@
   </template>
   <div class="d-block text-center">
     <h5>Informações do pedido:</h5>
-    <li v-for="(item, index) in orderDetails" v-bind:key="item.id">
-
-      <span><strong>{{index + 1}}. </strong></span>
-      <span v-if="item.itemType === OrderItemTypeEnum.PackedLunch">Marmita {{item.size}} de {{item.meat}} e Salada {{(item.salad).toLowerCase()}}<br></span>
-      <span v-if="item.itemType === OrderItemTypeEnum.Refrigerant">{{item.refrigerantType}} {{item.refrigerantSize}}<br></span>
-    </li>
+    <ul>
+      <li v-for="item in orderDetails" v-bind:key="item.id" class="text-left">
+        <span v-if="item.itemType === OrderItemTypeEnum.PackedLunch">Marmita {{item.size}} de {{item.meat}} e Salada {{(item.salad).toLowerCase()}}<br></span>
+        <span v-if="item.itemType === OrderItemTypeEnum.Refrigerant">{{item.refrigerantType}} {{item.refrigerantSize}}<br></span>
+      </li>
+    </ul>
 
     <div class="border-top border-gray mt-3 mb-2"></div>
 
@@ -43,17 +43,14 @@
 <script>
 import { OrderItemTypeEnum } from '../../variables/enums.js'
 
-
 export default {
   data: function () {
     return { OrderItemTypeEnum }
   },
-  
   props: {
     orderDetails: Array,
     userDetails: Object
   },
-
   methods: {
     closeModal: function() {
       this.$emit('modal-closed');
@@ -64,3 +61,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ol > li {
+  list-style: linear-gradient(45, #aaaaaa, #ff0000);
+}
+</style>

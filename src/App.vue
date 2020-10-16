@@ -79,7 +79,7 @@ export default {
 html, main {
   background-color: rgb(223, 223, 223);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .header {

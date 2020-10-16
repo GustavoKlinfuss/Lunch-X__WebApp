@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* .custom-control-input:checked ~ .custom-control-label::before {
   background-color:black !important;
   border-color:black !important;
