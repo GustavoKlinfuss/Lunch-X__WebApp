@@ -1,6 +1,6 @@
 <template>
 <main>
-  <header class="header sticky-top">{{header}}</header>
+  <header class="header sticky-top"><h1>Tempeadori</h1></header>
   <div class="container mt-2">
     <order-screen 
       v-if="stage === StagesEnum.OrderScreen" 
@@ -31,7 +31,6 @@ export default {
   data: function () {
     return {
       stage: StagesEnum.OrderScreen,
-      header: 'Tempeadori - Faça seu pedido',
       StagesEnum,
       OrderItemTypeEnum,
       orderDetails: [],
@@ -85,11 +84,13 @@ html, main {
 
 .header {
 	background-color:  #00326b;
-  padding: 16px;
-  font-size: 24px;
+  padding: 8px;
   color: white;
-  margin-bottom: 8px;
   border-bottom: 1px solid white;	
   text-align: center;
+}
+
+.back-button {
+  width: 60px;
 }
 </style>
