@@ -6,24 +6,24 @@
   v-on:exclude-card="excludeCard()"
 >
   <span>Option:</span>
-  <gt-radio 
+  <base-radio 
     :options="refrigerantOptions.refrigerantTypeOptions" 
     v-model="item.refrigerantType"/>
 
   <span>Size:</span>
-  <gt-radio 
+  <base-radio 
     :options="refrigerantOptions.refrigerantSizeOptions" 
     v-model="item.refrigerantSize"/>
 </base-card>
 </template>
 
 <script>
-import GtRadio from '../../../components/GtRadio.vue'
+import BaseRadio from '../../../components/BaseRadio.vue'
 import BaseCard from '../../../components/BaseCard.vue'
 
 export default {
   components: {
-    GtRadio,
+    BaseRadio,
     BaseCard
   },
 
