@@ -1,6 +1,12 @@
 <template>
-<b-button size="lg" class="gt-btn my-1 border border-light" v-on:click="click()">
-  <b-icon v-if="icon" :icon="icon"></b-icon>
+<b-button
+  size="lg"
+  class="gt-btn my-1"
+  v-on:click="click()"
+>
+  <b-icon
+    v-if="icon"
+    :icon="icon"/>
   {{text}}
 </b-button>
 </template>
@@ -21,6 +27,8 @@ export default {
 
 <style scoped>
 .gt-btn {
-  background-color: #00326b;
+  background-color: #111111;
+  border: solid 1px  #ff5555;
+  color: #ff5555;
 }
 </style>

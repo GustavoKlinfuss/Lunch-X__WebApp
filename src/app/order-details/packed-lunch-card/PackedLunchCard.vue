@@ -1,5 +1,10 @@
 <template>
-<base-card titleIcon="basket" cardTitle="Packed Lunch" :index="index" v-on:exclude-card="excludeCard()">
+<base-card 
+  titleIcon="basket" 
+  cardTitle="Packed Lunch" 
+  :index="index" 
+  v-on:exclude-card="excludeCard()"
+>
   <span>Meat:</span>
   <base-radio 
     :options="packedLunchOptions.meatOptions" 

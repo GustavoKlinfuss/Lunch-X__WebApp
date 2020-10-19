@@ -1,6 +1,8 @@
 <template>
 <main>
-  <header class="header sticky-top"><h1>Tempeadori</h1></header>
+  <header class="header sticky-top">
+    <h1>Tempeadori</h1>
+  </header>
   <div class="container mt-2">
     <order-details 
       v-if="stage === StagesEnum.OrderDetails" 
@@ -84,16 +86,16 @@ export default {
 
 <style>
 html, main {
-  background-color: rgb(223, 223, 223);
+  background-color: #24292E;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1rem;
+  color: #ff5555;
 }
 
 .header {
-	background-color:  #00326b;
+	background-color: #111111;
   padding: 8px;
-  color: white;
-  border-bottom: 1px solid white;	
+  border-bottom: 1px solid #ff5555;	
   text-align: center;
 }
 

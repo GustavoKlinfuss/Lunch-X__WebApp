@@ -1,6 +1,9 @@
 <template>
 <div class="d-flex flex-column">
-	<li v-for="(item, index) in orderDetails" v-bind:key="item.id">
+	<li 
+		v-for="(item, index) in orderDetails"
+		v-bind:key="item.id"
+	>
 		<packed-lunch-card 
 			v-if="item.itemType === OrderItemTypeEnum.PackedLunch" 
 			:item="item" 

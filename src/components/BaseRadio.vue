@@ -1,10 +1,14 @@
 <template>
 <div class="ml-4">
-  <li v-for="option in options" v-bind:key="option.id">
+  <li 
+    v-for="option in options" 
+    v-bind:key="option.id"
+  >
     <b-form-radio 
       :class="selectRadioClass(option)"
       v-model="selectedValue"
-      :value="option">
+      :value="option"
+    >
       {{option}}
     </b-form-radio>
   </li>
@@ -45,11 +49,16 @@ export default {
 };
 </script>
 
-<style scoped>
-/* .custom-control-input:checked ~ .custom-control-label::before {
-  background-color:black !important;
-  border-color:black !important;
-} */
+<style>
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #24292E !important;
+  background-color:#ff5555 !important;
+  border-color: #ff5555 !important;
+}
+
+.custom-control-label::before {
+  background-color: #24292E !important;
+}
 
 li {
   list-style-type: none;
