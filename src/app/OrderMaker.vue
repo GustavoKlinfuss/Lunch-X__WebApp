@@ -93,7 +93,7 @@ html, main {
 }
 
 .header {
-	background-color: #111111;
+	background-color: #151515;
   padding: 8px;
   border-bottom: 1px solid #ff5555;	
   text-align: center;

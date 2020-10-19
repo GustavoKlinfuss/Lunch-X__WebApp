@@ -51,13 +51,13 @@ export default {
 
 <style>
 .custom-control-input:checked ~ .custom-control-label::before {
-  color: #24292E !important;
   background-color:#ff5555 !important;
   border-color: #ff5555 !important;
 }
 
 .custom-control-label::before {
   background-color: #24292E !important;
+  border-color: #ff5555 !important;
 }
 
 li {

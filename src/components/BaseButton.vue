@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .gt-btn {
-  background-color: #111111;
+  background-color: #151515;
   border: solid 1px  #ff5555;
   color: #ff5555;
 }
