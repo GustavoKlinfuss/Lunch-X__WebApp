@@ -2,12 +2,12 @@
 <main>
   <header class="header sticky-top"><h1>Tempeadori</h1></header>
   <div class="container mt-2">
-    <order-screen 
-      v-if="stage === StagesEnum.OrderScreen" 
+    <order-details 
+      v-if="stage === StagesEnum.OrderDetails" 
       v-on:step-completed="toNextStage()"
       :orderDetails="orderDetails"/>
-    <user-info-screen 
-      v-if="stage === StagesEnum.UserInfoScreen" 
+    <user-details
+      v-if="stage === StagesEnum.UserDetails" 
       v-on:step-completed="openModal()"
       v-on:to-previous-stage="toPreviousStage()"
       :userDetails="userDetails"/>
@@ -21,22 +21,22 @@
 </template>
 
 <script>
-import OrderScreen from './app/order-details/OrderScreen.vue'
-import UserInfoScreen from './app/user-details/UserInfoScreen.vue'
+import OrderDetails from './app/order-details/OrderDetails.vue'
+import UserDetails from './app/user-details/UserDetails.vue'
 import FinishOrderModal from './app/finish-order-modal/FinishOrderModal.vue'
 import { OrderItemTypeEnum, StagesEnum } from './variables/enums.js'
 import axios from 'axios'
 
 export default {
   components: {
-    OrderScreen,
-    UserInfoScreen,
+    OrderDetails,
+    UserDetails,
     FinishOrderModal
   },
 
   data: function () {
     return {
-      stage: StagesEnum.OrderScreen,
+      stage: StagesEnum.OrderDetails,
       StagesEnum,
       OrderItemTypeEnum,
       orderDetails: [],

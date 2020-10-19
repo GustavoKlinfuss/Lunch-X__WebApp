@@ -5,8 +5,8 @@ export const OrderItemTypeEnum = Object.freeze({
 });
 
 export const StagesEnum = Object.freeze({
-  "OrderScreen":1,
-  "UserInfoScreen":2
+  "OrderDetails":1,
+  "UserDetails":2
 });
 
 export const RestaurantMenu = Object.freeze({

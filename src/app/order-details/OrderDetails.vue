@@ -1,5 +1,5 @@
 <template>
-<div class="d-flex flex-column" :key="keyToReloadScreen">
+<div class="d-flex flex-column">
 	<li v-for="(item, index) in orderDetails" v-bind:key="item.id">
 		<packed-lunch-card 
 			v-if="item.itemType === OrderItemTypeEnum.PackedLunch" 
@@ -40,20 +40,23 @@ export default {
 		RefrigerantCard,
 		BaseButton
 	},
+
 	data: function () { 
 		return {
-			keyToReloadScreen: 0,
 			OrderItemTypeEnum
 		}
 	},
+
 	props: {
 		orderDetails: {type: Array}
 	},
+
 	created: function () {
 		if(!this.orderDetails.length) {
 			this.addItemToOrder(OrderItemTypeEnum.PackedLunch);
 		}
 	},
+	
 	methods: {
 		toNextStage: function () {
 			this.$emit('step-completed', this.orderDetails);
@@ -88,7 +91,6 @@ export default {
 		
 		removeCard: function (index) {
 			this.orderDetails.splice(index, 1);
-			this.keyToReloadScreen += 1;
 		}
   }
 };
