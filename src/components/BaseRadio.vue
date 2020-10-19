@@ -1,6 +1,7 @@
 <template>
 <div class="ml-4">
   <li 
+    class="radio-li"
     v-for="option in options" 
     v-bind:key="option.id"
   >
@@ -60,7 +61,7 @@ export default {
   border-color: #ff5555 !important;
 }
 
-li {
+.radio-li {
   list-style-type: none;
 }
 </style>

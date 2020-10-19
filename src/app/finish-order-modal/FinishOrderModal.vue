@@ -67,3 +67,17 @@ export default {
   }
 }
 </script>
+
+<style>
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+}
+.modal-content {
+  background-color: #24292E !important;
+  border: 1px solid #ff5555;
+  color:  #ff5555;
+}
+.modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);;
+}
+</style>
