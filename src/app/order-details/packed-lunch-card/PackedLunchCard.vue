@@ -1,5 +1,5 @@
 <template>
-<gt-card titleIcon="basket" cardTitle="Packed Lunch" :index="index" v-on:exclude-card="excludeCard()">
+<base-card titleIcon="basket" cardTitle="Packed Lunch" :index="index" v-on:exclude-card="excludeCard()">
   <span>Meat:</span>
   <gt-radio 
     :options="packedLunchOptions.meatOptions" 
@@ -14,18 +14,18 @@
   <gt-radio 
     :options="packedLunchOptions.saladOptions"
     v-model="item.salad"/>
-</gt-card>
+</base-card>
 </template>
 
 <script>
 import GtRadio from '../../../components/GtRadio.vue'
-import GtCard from '../../../components/GtCard.vue'
+import BaseCard from '../../../components/BaseCard.vue'
 import { RestaurantMenu } from '../../../variables/enums.js'
 
 export default {
   components: {
     GtRadio,
-    GtCard
+    BaseCard
   },
 
   data: function () {
@@ -43,7 +43,7 @@ export default {
     item: Object,
     index: Number
   },
-  
+
   methods: {
     getMeatOptionsFromThisDay: function() {
       const thisDayOfWeek = (new Date(Date.now())).getDay();

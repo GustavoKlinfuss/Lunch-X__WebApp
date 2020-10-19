@@ -1,5 +1,5 @@
 <template>
-<gt-card 
+<base-card 
   titleIcon="cup-straw" 
   :index="index" 
   cardTitle="Refrigerant" 
@@ -14,17 +14,17 @@
   <gt-radio 
     :options="refrigerantOptions.refrigerantSizeOptions" 
     v-model="item.refrigerantSize"/>
-</gt-card>
+</base-card>
 </template>
 
 <script>
 import GtRadio from '../../../components/GtRadio.vue'
-import GtCard from '../../../components/GtCard.vue'
+import BaseCard from '../../../components/BaseCard.vue'
 
 export default {
   components: {
     GtRadio,
-    GtCard
+    BaseCard
   },
 
   data: function () {
@@ -40,7 +40,7 @@ export default {
     item: Object,
     index: Number
   },
-  
+
   methods: {
     excludeCard: function () {
       this.$emit('exclude-card', this.index)
