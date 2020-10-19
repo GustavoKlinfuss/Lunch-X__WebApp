@@ -1,7 +1,7 @@
 <template>
 <main>
   <header class="header sticky-top">
-    <h1>Tempeadori</h1>
+    <h1>Make your request!</h1>
   </header>
   <div class="container mt-2">
     <order-details 
