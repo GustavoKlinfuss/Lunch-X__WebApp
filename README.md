@@ -1,24 +1,13 @@
-# tempeadori
+# Order Maker (Front-end)
 
-## Project setup
-```
-npm install
-```
+## An simple web application to realize delivery orders to restaurant.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Visual design - Phone
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](/src/assets/rmp1.png)
+### 
+![](/src/assets/rmp2.png)
+###
+![](/src/assets/rmp3.png)
+###
+![](/src/assets/rmp4.png)
