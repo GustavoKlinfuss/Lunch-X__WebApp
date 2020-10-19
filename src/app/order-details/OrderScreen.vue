@@ -15,14 +15,14 @@
 	<div class="d-flex">
 		<gt-button 
 			class="w-50 mr-1"
-			text="Adicionar Marmita" 
+			text="Add Packed Lunch" 
 			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
 		<gt-button 
 			class="w-50 ml-1"
-			text="Adicionar Refrigerante"
+			text="Add Refrigerant"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
-	<gt-button text="Próxima etapa" v-on:click="finishOrder()"/>
+	<gt-button text="Next Stage" v-on:click="toNextStage()"/>
 </div>
 </template>
 
@@ -53,7 +53,7 @@ export default {
 		}
 	},
 	methods: {
-		finishOrder: function () {
+		toNextStage: function () {
 			this.$emit('step-completed', this.orderDetails);
 		},
 
@@ -65,8 +65,6 @@ export default {
 		getNewItemByItemType: function (itemType) {
 			if(itemType === OrderItemTypeEnum.PackedLunch) return this.newPackedLunch();
 			if(itemType === OrderItemTypeEnum.Refrigerant) return this.newRefrigerant();
-			
-			throw "Não foi selecionado nem marmita, nem refrigerante";
 		},
 		
 		newPackedLunch: function() {

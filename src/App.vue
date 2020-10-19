@@ -4,12 +4,12 @@
   <div class="container mt-2">
     <order-screen 
       v-if="stage === StagesEnum.OrderScreen" 
-      v-on:step-completed="toNextScreen()"
+      v-on:step-completed="toNextStage()"
       :orderDetails="orderDetails"/>
     <user-info-screen 
       v-if="stage === StagesEnum.UserInfoScreen" 
       v-on:step-completed="openModal()"
-      v-on:to-previous-screen="toPreviousScreen()"
+      v-on:to-previous-stage="toPreviousStage()"
       :userDetails="userDetails"/>
     <finish-order-modal 
       :orderDetails="orderDetails" 
@@ -28,6 +28,12 @@ import { OrderItemTypeEnum, StagesEnum } from './variables/enums.js'
 import axios from 'axios'
 
 export default {
+  components: {
+    OrderScreen,
+    UserInfoScreen,
+    FinishOrderModal
+  },
+
   data: function () {
     return {
       stage: StagesEnum.OrderScreen,
@@ -37,17 +43,13 @@ export default {
       userDetails: {type: Object}
     }
   },
-  components: {
-    OrderScreen,
-    UserInfoScreen,
-    FinishOrderModal
-  },
+  
   methods: {
-    toPreviousScreen: function () {
+    toPreviousStage: function () {
       this.stage -= 1;
     },
 
-    toNextScreen: function () {
+    toNextStage: function () {
       this.stage += 1;
     },
 
@@ -60,15 +62,20 @@ export default {
     },
 
     finishOrder: function () {
-      axios.post('http://localhost:3000/', {userDetails: this.userDetails, orderDetails: this.orderDetails})
+      const data = {
+        userDetails: this.userDetails, 
+        orderDetails: this.orderDetails
+      }
+
+      axios.post('http://localhost:3000/', data)
       .then((response) => {
         if (response.data.Success) {
-          alert("Seu pedido foi realizado! \n\n Será entregue em cerca de 30 minutos.");
+          alert("Your order has been placed! \n\n Will be delivered in approximately 30 minutes!");
         }
       })
       .catch(error => {
         console.log(error);
-        alert('Ocorreu um erro. Por favor tente novamente!')
+        alert('An error has ocurred. Please try again!')
       })
     }
   }

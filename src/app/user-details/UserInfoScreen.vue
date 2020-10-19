@@ -2,18 +2,47 @@
 <b-form v-on:submit="onSubmit">
   <div class="d-flex flex-column">
     <div class="card px-3 pt-2 mb-2">
-      <h5>Dados para contato e entrega</h5>
-      <gt-input label="Nome:" required v-model="userDetails.name"/>
-      <gt-input label="Rua:" required  v-model="userDetails.addressStreet"/>
+      <h5>Data to contact and delivery</h5>
+
+      <gt-input 
+        label="Name:" 
+        v-model="userDetails.name"
+        required/>
+
+      <gt-input 
+        label="Street:" 
+        v-model="userDetails.addressStreet"
+        required/>
+
       <div class="d-flex">
-        <gt-input type="number" class="w-50 mr-1" label="Número:" required v-model="userDetails.addressNumber"/>
-        <gt-input class="w-50 ml-1" label="Complemento:" v-model="userDetails.addressComplement"/>
+        <gt-input 
+          class="w-50 mr-1"
+          label="Number:" 
+          v-model="userDetails.addressNumber" 
+          type="number"
+          required/>
+
+        <gt-input 
+          class="w-50 ml-1" 
+          label="Complement:" 
+          v-model="userDetails.addressComplement"/>
       </div>
-      <gt-input type="phone" label="Telefone:" required v-model="userDetails.phone"/>
+
+      <gt-input  
+        label="Phone:" 
+        v-model="userDetails.phone"
+        type="phone"
+        required/>
     </div>
     <div class="d-flex">
-      <gt-button class="back-button" icon="arrow-left" v-on:click="toPreviousScreen()"/>
-      <gt-button class="w-100 ml-1" type="submit" text="Próxima etapa"/>
+      <gt-button 
+        class="back-button" 
+        icon="arrow-left" 
+        v-on:click="toPreviousStage()"/>
+      <gt-button 
+        class="w-100 ml-1" 
+        type="submit" 
+        text="Next Stage"/>
     </div>
   </div>
 </b-form>
@@ -28,6 +57,7 @@ export default {
     GtButton,
     GtInput
   },
+  
   props: {
     userDetails: {
       name: String,
@@ -37,6 +67,7 @@ export default {
       phone: String
     }
   },
+
   methods: {
     finishUserDetails: function () {
       this.$emit('step-completed', this.userDetails);
@@ -47,8 +78,8 @@ export default {
       this.finishUserDetails();
     },
 
-    toPreviousScreen: function() {
-      this.$emit('to-previous-screen');
+    toPreviousStage: function() {
+      this.$emit('to-previous-stage');
     }
   }
 }
