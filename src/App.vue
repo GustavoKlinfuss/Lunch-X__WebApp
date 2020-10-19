@@ -60,7 +60,7 @@ export default {
     },
 
     finishOrder: function () {
-      axios.post('http://192.168.25.188:3000/', {userDetails: this.userDetails, orderDetails: this.orderDetails})
+      axios.post('http://localhost:3000/', {userDetails: this.userDetails, orderDetails: this.orderDetails})
       .then((response) => {
         if (response.data.Success) {
           alert("Seu pedido foi realizado! \n\n Será entregue em cerca de 30 minutos.");
