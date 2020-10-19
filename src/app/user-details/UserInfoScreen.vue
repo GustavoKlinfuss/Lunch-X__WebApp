@@ -35,11 +35,11 @@
         required/>
     </div>
     <div class="d-flex">
-      <gt-button 
+      <base-button 
         class="back-button" 
         icon="arrow-left" 
         v-on:click="toPreviousStage()"/>
-      <gt-button 
+      <base-button 
         class="w-100 ml-1" 
         type="submit" 
         text="Next Stage"/>
@@ -49,15 +49,15 @@
 </template>
 
 <script>
-import GtButton from '../../components/GtButton.vue'
+import BaseButton from '../../components/BaseButton.vue'
 import GtInput from '../../components/GtInput.vue'
 
 export default {
   components: {
-    GtButton,
+    BaseButton,
     GtInput
   },
-  
+
   props: {
     userDetails: {
       name: String,

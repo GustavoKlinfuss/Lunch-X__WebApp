@@ -13,30 +13,32 @@
 			v-on:exclude-card="removeCard($event)"/>
 	</li>
 	<div class="d-flex">
-		<gt-button 
+		<base-button 
 			class="w-50 mr-1"
 			text="Add Packed Lunch" 
 			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
-		<gt-button 
+		<base-button 
 			class="w-50 ml-1"
 			text="Add Refrigerant"
 			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
 	</div>
-	<gt-button text="Next Stage" v-on:click="toNextStage()"/>
+	<base-button 
+		text="Next Stage" 
+		v-on:click="toNextStage()"/>
 </div>
 </template>
 
 <script>
 import PackedLunchCard from './packed-lunch-card/PackedLunchCard.vue'
 import RefrigerantCard from './refrigerant-card/RefrigerantCard.vue'
-import GtButton from '../../components/GtButton.vue'
+import BaseButton from '../../components/BaseButton.vue'
 import { OrderItemTypeEnum } from '../../variables/enums.js'
 
 export default {
 	components: {
 		PackedLunchCard,
 		RefrigerantCard,
-		GtButton
+		BaseButton
 	},
 	data: function () { 
 		return {
