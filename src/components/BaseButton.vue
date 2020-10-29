@@ -27,8 +27,19 @@ export default {
 
 <style scoped>
 .gt-btn {
-  background-color: #151515;
-  border: solid 1px  #ff5555;
-  color: #ff5555;
+  background-color:#151515dd;
+  border: solid 1px lightblue;
+  color: inherit;
+}
+
+.gt-btn:hover {
+  background-color:lightblue;
+}
+
+.gt-btn:focus {
+  box-shadow: inherit;
+  border: solid 1px lightblue;
+  background-color: #151515bb;
+  color:inherit;
 }
 </style>

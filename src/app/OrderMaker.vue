@@ -1,7 +1,9 @@
 <template>
-<main>
-  <header class="header sticky-top">
-    <h1>Make your request!</h1>
+<div class="main">
+  <header class="header">
+    <h1>
+      Make your request!
+    </h1>
   </header>
   <div class="container mt-2">
     <order-details 
@@ -19,7 +21,7 @@
       v-on:modal-closed="closeModal()" 
       v-on:order-finished="finishOrder()"/>
   </div>
-</main>
+</div>
 </template>
 
 <script>
@@ -85,21 +87,32 @@ export default {
 </script>
 
 <style>
-html, main {
-  background-color: #24292E;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  color: lightblue;
+  font-family: Montserrat;
   font-size: 1rem;
-  color: #ff5555;
+  flex-grow: 1;
+  background: repeating-linear-gradient(30deg, #bbbbbb, rgb(188, 209, 216), #bbbbbb) no-repeat;
 }
 
 .header {
-	background-color: #151515;
+	background-color: #151515dd;
   padding: 8px;
-  border-bottom: 1px solid #ff5555;	
+  border-bottom: 1px solid lightblue;	
   text-align: center;
+  color:#bbbbbb;
+  -webkit-text-stroke: 1px lightblue;
 }
 
-.back-button {
+.fw-60 {
   width: 60px;
 }
 </style>

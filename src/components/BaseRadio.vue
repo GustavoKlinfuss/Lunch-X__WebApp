@@ -52,13 +52,13 @@ export default {
 
 <style>
 .custom-control-input:checked ~ .custom-control-label::before {
-  background-color:#ff5555 !important;
-  border-color: #ff5555 !important;
+  background-color:lightblue !important;
+  border-color: lightblue !important;
 }
 
 .custom-control-label::before {
   background-color: #24292E !important;
-  border-color: #ff5555 !important;
+  border-color: lightblue !important;
 }
 
 .radio-li {

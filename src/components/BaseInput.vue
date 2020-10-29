@@ -34,10 +34,8 @@ export default {
 <style scoped>
 .form-control {
   background-color: #24292E;
-  color: #ff5555;
 }
 input:focus {
   background-color:#aa333300;
-  color: white;
 }
 </style>

@@ -26,15 +26,13 @@
   <template v-slot:modal-footer>
     <div class="d-flex w-100">
       <b-button
-        class="back-button"
-        variant="outline-warning"
+        class="modal-button fw-60"
         v-on:click="closeModal()"
       >
         <b-icon icon="arrow-left"></b-icon>
       </b-button>
       <b-button
-        class="w-100 ml-2"
-        variant="outline-success"
+        class="modal-button w-100 ml-2"
         v-on:click="finishOrder()"
       >
         Confirm and finalize order!
@@ -69,15 +67,24 @@ export default {
 </script>
 
 <style>
-.modal-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+hr {
+  background-color: lightblue;
 }
+
+.modal-button {
+  background-color: transparent !important;
+  border-color: lightblue !important;
+  color: lightblue !important;
+}
+
+.modal-button:hover {
+  background-color: lightblue !important;
+  color: white !important;
+}
+
 .modal-content {
   background-color: #24292E !important;
-  border: 1px solid #ff5555;
-  color:  #ff5555;
-}
-.modal-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);;
+  border: 1px solid lightblue !important;
+  color: lightblue;
 }
 </style>

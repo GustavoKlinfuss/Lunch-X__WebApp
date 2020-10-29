@@ -36,7 +36,7 @@
     </div>
     <div class="d-flex">
       <base-button 
-        class="back-button" 
+        class="fw-60" 
         icon="arrow-left" 
         v-on:click="toPreviousStage()"/>
       <base-button 
@@ -87,7 +87,7 @@ export default {
 
 <style scoped>
 .card {
-  background-color:#151515;
-  border: 1px solid #ff5555;
+  background-color: #151515dd;
+  border: 1px solid lightblue;
 }
 </style>
