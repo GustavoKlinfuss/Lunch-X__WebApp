@@ -10,7 +10,7 @@
       v-model="selectedValue"
       :value="option"
     >
-      {{option}}
+      <span class="option-color">{{option}}</span>
     </b-form-radio>
   </li>
 </div>
@@ -50,18 +50,22 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .custom-control-input:checked ~ .custom-control-label::before {
-  background-color:lightblue !important;
-  border-color: lightblue !important;
+  background-color:$primary !important;
+  border-color: $primary !important;
 }
 
 .custom-control-label::before {
-  background-color: #24292E !important;
-  border-color: lightblue !important;
+  background-color: $secondary !important;
+  border-color: $primary !important;
 }
 
 .radio-li {
   list-style-type: none;
+}
+
+.option-color {
+  color: $primary;
 }
 </style>

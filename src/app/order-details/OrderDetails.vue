@@ -15,19 +15,21 @@
 			:index="index" 
 			v-on:exclude-card="removeCard($event)"/>
 	</li>
-	<div class="d-flex">
+	<div class="d-flex flex-column mb-2">
+		<div class="d-flex">
+			<base-button 
+				class="w-50 mr-1"
+				text="Add Packed Lunch" 
+				v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
+			<base-button 
+				class="w-50 ml-1"
+				text="Add Refrigerant"
+				v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
+		</div>
 		<base-button 
-			class="w-50 mr-1"
-			text="Add Packed Lunch" 
-			v-on:click="addItemToOrder(OrderItemTypeEnum.PackedLunch)"/>
-		<base-button 
-			class="w-50 ml-1"
-			text="Add Refrigerant"
-			v-on:click="addItemToOrder(OrderItemTypeEnum.Refrigerant)"/>
+			text="Next Stage" 
+			v-on:click="toNextStage()"/>
 	</div>
-	<base-button 
-		text="Next Stage" 
-		v-on:click="toNextStage()"/>
 </div>
 </template>
 

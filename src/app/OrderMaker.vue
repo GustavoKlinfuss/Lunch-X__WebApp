@@ -86,8 +86,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Grandstander');
 
 body {
   height: 100vh;
@@ -96,20 +97,24 @@ body {
 }
 
 .main {
-  color: lightblue;
-  font-family: Montserrat;
+  color: $primary;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   flex-grow: 1;
-  background: repeating-linear-gradient(30deg, #bbbbbb, rgb(188, 209, 216), #bbbbbb) no-repeat;
+  background: $bg;
 }
 
 .header {
-	background-color: #151515dd;
+  font-family: 'Grandstander', cursive;
+	background-color: $secondary;
   padding: 8px;
-  border-bottom: 1px solid lightblue;	
+  border-bottom: 1px solid $primary;	
   text-align: center;
-  color:#bbbbbb;
-  -webkit-text-stroke: 1px lightblue;
+  color: $primary;
+}
+
+h1 {
+  margin: 0px !important;
 }
 
 .fw-60 {

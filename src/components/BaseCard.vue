@@ -39,10 +39,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .card {
-  background-color: #151515dd;
-  border: 1px solid lightblue;
+  background-color: $secondary;
+  border: 1px solid $primary;
   padding: 8px;
 }
 </style>

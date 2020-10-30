@@ -25,21 +25,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .gt-btn {
-  background-color:#151515dd;
-  border: solid 1px lightblue;
-  color: inherit;
+  background-color: $secondary;
+  border: solid 1px $primary;
+  color: $primary;
 }
 
 .gt-btn:hover {
-  background-color:lightblue;
+  background-color: $primary;
 }
 
 .gt-btn:focus {
   box-shadow: inherit;
-  border: solid 1px lightblue;
-  background-color: #151515bb;
-  color:inherit;
+  border: solid 1px $primary;
+  background-color: $secondary;
 }
 </style>

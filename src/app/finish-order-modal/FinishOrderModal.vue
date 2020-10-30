@@ -66,25 +66,33 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 hr {
-  background-color: lightblue;
+  background-color: $primary;
 }
 
 .modal-button {
   background-color: transparent !important;
-  border-color: lightblue !important;
-  color: lightblue !important;
+  border-color: $primary !important;
+  color: $primary !important;
 }
 
 .modal-button:hover {
-  background-color: lightblue !important;
+  background-color: $primary !important;
   color: white !important;
 }
 
 .modal-content {
   background-color: #24292E !important;
-  border: 1px solid lightblue !important;
-  color: lightblue;
+  border: 1px solid $primary !important;
+  color: $primary;
+}
+
+.modal-header {
+  border-bottom: 1px solid $primary !important;
+}
+
+.modal-footer {
+  border-top: 1px solid $primary !important;
 }
 </style>
