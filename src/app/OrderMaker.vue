@@ -97,7 +97,7 @@ body {
 }
 
 .main {
-  color: $primary;
+  color: $secondary;
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   flex-grow: 1;
@@ -106,11 +106,18 @@ body {
 
 .header {
   font-family: 'Grandstander', cursive;
-	background-color: $secondary;
+	background-color: red;
   padding: 8px;
-  border-bottom: 1px solid $primary;	
+  border-bottom: 2px solid $secondary;
   text-align: center;
-  color: $primary;
+  color: white;
+  text-shadow: 1px 1px $secondary;
+}
+
+@media only screen and (max-device-width : 400px) {
+  h1 {
+    font-size: 2rem !important;
+  }
 }
 
 h1 {

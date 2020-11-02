@@ -41,8 +41,8 @@ export default {
 
 <style scoped lang="scss">
 .card {
-  background-color: $secondary;
-  border: 1px solid $primary;
+  background-color: $primary;
+  border: solid 2px $secondary;
   padding: 8px;
 }
 </style>

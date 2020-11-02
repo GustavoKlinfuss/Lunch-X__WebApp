@@ -16,8 +16,6 @@
       </li>
     </ul>
 
-    <hr>
-
     <h5>Personal information:</h5>
     <span><b>Name:</b> {{userDetails.name}}</span><br>
     <span><b>Address:</b> {{userDetails.addressStreet}}, {{userDetails.addressNumber}}</span><span v-if="userDetails.addressComplement"> - {{userDetails.addressComplement}}</span><br>
@@ -67,32 +65,27 @@ export default {
 </script>
 
 <style lang="scss">
-hr {
-  background-color: $primary;
-}
-
 .modal-button {
   background-color: transparent !important;
-  border-color: $primary !important;
-  color: $primary !important;
+  border: 2px solid $secondary !important;
+  color: $secondary !important;
 }
 
 .modal-button:hover {
   background-color: $primary !important;
-  color: white !important;
+  color: $secondary !important;
 }
 
 .modal-content {
-  background-color: #24292E !important;
-  border: 1px solid $primary !important;
-  color: $primary;
+  border: 2px solid $secondary !important;
+  color: $secondary;
 }
 
 .modal-header {
-  border-bottom: 1px solid $primary !important;
+  border-bottom: 1px solid $secondary !important;
 }
 
 .modal-footer {
-  border-top: 1px solid $primary !important;
+  border-top: 1px solid $secondary !important;
 }
 </style>

@@ -52,13 +52,12 @@ export default {
 
 <style lang="scss">
 .custom-control-input:checked ~ .custom-control-label::before {
-  background-color:$primary !important;
-  border-color: $primary !important;
+  background-color:$secondary !important;
+  border-color: $secondary !important;
 }
 
 .custom-control-label::before {
-  background-color: $secondary !important;
-  border-color: $primary !important;
+  border-color: $secondary !important;
 }
 
 .radio-li {
@@ -66,6 +65,6 @@ export default {
 }
 
 .option-color {
-  color: $primary;
+  color: $secondary;
 }
 </style>

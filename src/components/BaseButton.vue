@@ -27,9 +27,9 @@ export default {
 
 <style scoped lang="scss">
 .gt-btn {
-  background-color: $secondary;
-  border: solid 1px $primary;
-  color: $primary;
+  background-color: $primary;
+  border: solid 2px $secondary;
+  color: $secondary;
 }
 
 .gt-btn:hover {
@@ -38,7 +38,7 @@ export default {
 
 .gt-btn:focus {
   box-shadow: inherit;
-  border: solid 1px $primary;
-  background-color: $secondary;
+  border: solid 2 px $secondary;
+  background-color: $primary;
 }
 </style>

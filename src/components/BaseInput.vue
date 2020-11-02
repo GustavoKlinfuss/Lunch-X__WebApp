@@ -33,11 +33,12 @@ export default {
 
 <style scoped lang="scss">
 .form-control {
-  color: white;
+  color: $secondary;
+  border: 1px solid $secondary;
   background-color: $bg;
 }
 input:focus {
-  color: white;
+  color: $secondary;
   background-color: $bg;
 }
 </style>
