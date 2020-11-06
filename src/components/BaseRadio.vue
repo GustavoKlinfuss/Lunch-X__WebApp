@@ -1,6 +1,6 @@
 <template>
 <div class="ml-4">
-  <li 
+  <li
     class="radio-li"
     v-for="option in options" 
     v-bind:key="option.id"
@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss">
 .custom-control-input:checked ~ .custom-control-label::before {
-  background-color:$secondary !important;
+  background-color: $primary !important;
   border-color: $secondary !important;
 }
 

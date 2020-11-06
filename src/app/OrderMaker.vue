@@ -88,7 +88,8 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=Grandstander');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
   height: 100vh;
@@ -101,20 +102,20 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   flex-grow: 1;
-  background: $bg;
+  background: linear-gradient(135deg, #151515,  #353535);
 }
 
 .header {
-  font-family: 'Grandstander', cursive;
-	background-color: red;
+  font-family: 'Raleway', Roboto;
+	background: $primary;
   padding: 8px;
   border-bottom: 2px solid $secondary;
   text-align: center;
-  color: white;
-  text-shadow: 1px 1px $secondary;
+  color: $secondary;
+  padding: 12px 0px;
 }
 
-@media only screen and (max-device-width : 400px) {
+@media only screen and (max-device-width : 382px) {
   h1 {
     font-size: 2rem !important;
   }

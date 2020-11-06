@@ -1,6 +1,6 @@
 <template>
 <div class="card pb-2 mb-2">
-  <div class="p-1 d-flex justify-content-between">
+  <div class="pl-1 d-flex justify-content-between">
     <h5 class="my-2 ml-1">
       <b-icon 
         :icon="titleIcon" 
@@ -8,12 +8,10 @@
       Item {{index + 1}} - {{ cardTitle }}
     </h5>
     <b-button 
-      class="align-self-center"
+      class="align-self-start"
       variant="danger" 
       v-on:click="excludeCard()"
-    >
-      Remove
-    </b-button>
+    >x</b-button>
   </div>
   <div class="ml-4">
     <slot></slot>
@@ -41,8 +39,22 @@ export default {
 
 <style scoped lang="scss">
 .card {
-  background-color: $primary;
-  border: solid 2px $secondary;
+  background-color: lightgray;
+  border: solid 2px $primary;
   padding: 8px;
+}
+
+
+@media only screen and (max-device-width : 600px) {
+  .card {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (min-device-width : 600px) {
+  .card {
+    width: 600px;
+  }
 }
 </style>

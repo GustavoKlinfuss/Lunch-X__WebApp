@@ -35,10 +35,8 @@ export default {
 .form-control {
   color: $secondary;
   border: 1px solid $secondary;
-  background-color: $bg;
 }
 input:focus {
   color: $secondary;
-  background-color: $bg;
 }
 </style>

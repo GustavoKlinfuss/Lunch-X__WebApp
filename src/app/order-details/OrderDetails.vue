@@ -1,6 +1,6 @@
 <template>
 <div class="d-flex flex-column">
-	<li 
+	<li class="d-flex justify-content-center"
 		v-for="(item, index) in orderDetails"
 		v-bind:key="item.id"
 	>
