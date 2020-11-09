@@ -17,21 +17,10 @@ This web app allows to user make requests for packed lunches and refrigerants, n
 ## Visual on mobile
 ##### *Smartphone used is Motorola Moto G4 (640x360 pixels)*
 
----
-
-![](/src/assets/phone_example.png)
+## ![](/src/assets/phone_example.png)
 
 ## Visual on computer (used a Full HD screen)
 ##### *Screen used is Full HD (1920x1080 pixels)*
-
----
-
-![](/src/assets/computer_example_1.png)
-
----
-
-![](/src/assets/computer_example_2.png)
-
----
-
-![](/src/assets/computer_example_3.png)
+## ![](/src/assets/computer_example_1.png)
+## ![](/src/assets/computer_example_2.png)
+## ![](/src/assets/computer_example_3.png)
