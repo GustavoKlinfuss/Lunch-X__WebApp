@@ -87,7 +87,7 @@ export default {
 
 <style scoped lang="scss">
 .card {
-  background-color: $primary;
+  background: linear-gradient(#cccccc, #dddddd, #dddddd);;
   border: 2px solid $secondary;
 }
 </style>

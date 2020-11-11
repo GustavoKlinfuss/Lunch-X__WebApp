@@ -102,7 +102,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   flex-grow: 1;
-  background: linear-gradient(135deg, #151515,  #353535);
+  background: linear-gradient(90deg, #151515,  #353535, #353535, #151515);
 }
 
 .header {
