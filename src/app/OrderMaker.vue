@@ -115,6 +115,10 @@ body {
   padding: 12px 0px;
 }
 
+.container {
+  max-width: 800px !important;
+}
+
 @media only screen and (max-device-width : 382px) {
   h1 {
     font-size: 2rem !important;

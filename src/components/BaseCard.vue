@@ -42,19 +42,6 @@ export default {
   background: linear-gradient(#cccccc, #dddddd, #dddddd);
   border: solid 2px $primary;
   padding: 8px;
-}
-
-
-@media only screen and (max-device-width : 600px) {
-  .card {
-    width: 100%;
-  }
-}
-
-
-@media only screen and (min-device-width : 600px) {
-  .card {
-    width: 600px;
-  }
+  width: 100%
 }
 </style>
