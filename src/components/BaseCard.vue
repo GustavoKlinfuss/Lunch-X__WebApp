@@ -39,8 +39,9 @@ export default {
 
 <style scoped lang="scss">
 .card {
-  background: linear-gradient(#cccccc, #dddddd, #dddddd);
-  border: solid 2px $primary;
+  background: linear-gradient(#bbbbbb, #cccccc, #dddddd);
+  border: solid 4px $secondary;
+  border-radius: 12px;
   padding: 8px;
   width: 100%
 }

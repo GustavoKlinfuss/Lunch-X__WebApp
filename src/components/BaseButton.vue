@@ -29,6 +29,7 @@ export default {
 .gt-btn {
   background-color: $primary;
   border: solid 2px $secondary;
+  border-radius: 12px;
   color: $secondary;
 }
 
